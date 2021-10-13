@@ -1,5 +1,12 @@
-// keeps track of different characteristics of a customer's profile, i.e., name, address, phone number, number of years
+
+
+
+
+
+
+/* // keeps track of different characteristics of a customer's profile, i.e., name, address, phone number, number of years
 // since the individuals is a customer, customer status (active or inactive), whether the vehicle is for personal use or both
+
 public class CustomerProf {
     private String adminID;
     private String firstName;
@@ -69,6 +76,9 @@ public class CustomerProf {
         vehicleInfo = newVehicleInfo;
     }
 }
+
+
+ */
 
 
 
