@@ -20,26 +20,40 @@ public class CustomerProfDB {
         boolean success = false;      //set success to false until the profile is deleted. Then set success to true
         for (int i = 0; i <customerList.size(); i++) {
             CustomerProf customer = customerList.get(i);    //iterate through each person in the customer profile list
-
-            //now if the adminID == last name, the matching customerprofile has been found
-            if((customer.getadminID().equals(adminID)) && (customer.getlastName().equals(lastName))) {
+            if (customer.getadminID().equals(adminID) && customer.getlastName().equals(lastName)) {
+                customerList.remove(i);
+                numCustomer--;
+                success = true;
+                break;
+            }
+        }
+        return success;
+    }
+    public CustomerProf findProfile(String adminID, String lastName) {
+        currentCustomerIndex = -1; //until a customer profile matches, keep index at 1
+        for (int i = 0; i < customerList.size(); i++) {
+            CustomerProf customer = customerList.get(i);
+            if(customer.getadminID().equals(adminID) && customer.getlastName().equals(lastName)) {
                 currentCustomerIndex = i;
                 break;
             }
         }
         if(currentCustomerIndex == -1) {
-            System.out.println("No such customer in the database.");
+            System.out.println("Customer profile is not in the databse.");
             return null;
         }
-        else{ //return that matching customer profile
+        else{
             return customerList.get(currentCustomerIndex);
         }
-
-    }
-    public CustomerProf findProfile(String adminID, String lastName) {
-
     }
     public CustomerProf findFirstProfile() {
+        if(numCustomer <= 0) {
+            return null;
+        }
+        else{
+            CustomerProf customer = customerList.get(0); //1st customer in the list
+            return customer;
+        }
 
     }
     public CustomerProf findNextProfile() {
