@@ -87,7 +87,7 @@ public class CustomerProf {
 
 
 
-
+//Ashely's code
 /* // keeps track of different characteristics of a customer's profile, i.e., name, address, phone number, number of years
 // since the individuals is a customer, customer status (active or inactive), whether the vehicle is for personal use or both
 
