@@ -1,4 +1,4 @@
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 //Maintains a collection of CustomerProfs for all customers that have used ICS in the past or present
@@ -16,7 +16,7 @@ public class CustomerProfDB {
         customerList.add(cusProfile); //insert the new profile into the array
         numCustomer++;                //increment the number of customers by 1
     }
-    public boolean deletePofile(String adminID, String lastName) {
+    public boolean deleteProfile(String adminID, String lastName) {
         boolean success = false;      //set success to false until the profile is deleted. Then set success to true
         for (int i = 0; i <customerList.size(); i++) {
             CustomerProf customer = customerList.get(i);    //iterate through each person in the customer profile list
@@ -39,7 +39,7 @@ public class CustomerProfDB {
             }
         }
         if(currentCustomerIndex == -1) {
-            System.out.println("Customer profile is not in the databse.");
+            System.out.println("Customer profile is not in the database.");
             return null;
         }
         else{
@@ -51,19 +51,25 @@ public class CustomerProfDB {
             return null;
         }
         else{
-            CustomerProf customer = customerList.get(0); //1st customer in the list
+            CustomerProf customer = customerList.get(0); //1st customer in the list is at index 0
             return customer;
         }
-
     }
     public CustomerProf findNextProfile() {
-
+        CustomerProf nextCustomer = customerList.get(currentCustomerIndex);
+        currentCustomerIndex++;
+        return nextCustomer;
     }
     public void writeAllCustomerProf(String profilesss) throws IOException {
-
+        FileOutputStream output = new FileOutputStream((profilesss));
+        ObjectOutputStream objectOutput = new ObjectOutputStream(output);
+        objectOutput.writeObject(customerList); //will write out all the profiles from CustomerProf into the destination file
+        //objectOutput.close(); //close output stream
     }
     public void initializeDatabase(String PROFILE) throws IOException, ClassNotFoundException{
-
+        FileInputStream input = new FileInputStream(PROFILE);
+        ObjectInputStream objectInput = new ObjectInputStream(input);
+        customerList = (ArrayList<CustomerProf>)objectInput.readObject(); //writes out all of the Customer Proifles that the user wants entered in from the inpput file to the customer list
     }
 
 
