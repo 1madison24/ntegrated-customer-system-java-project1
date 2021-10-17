@@ -1,8 +1,15 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.io.Serializable;
+/* Object serialization = object can be represented as a sequence of bytes that includes
+    the object's data, info about the object's type, and the types of data stores in the object
+   After serialized object is written into a file, it can be read from that file and
+    deserialized (i.e. the type info and bytes representing the object + its data
+                   --> used to recreate the object in memory
+ */
 
 //Maintains a collection of CustomerProfs for all customers that have used ICS in the past or present
-public class CustomerProfDB {
+public class CustomerProfDB implements Serializable{
     //initialize variables
     int numCustomer;
     int currentCustomerIndex;
@@ -69,10 +76,6 @@ public class CustomerProfDB {
     public void initializeDatabase(String PROFILE) throws IOException, ClassNotFoundException{
         FileInputStream input = new FileInputStream(PROFILE);
         ObjectInputStream objectInput = new ObjectInputStream(input);
-        customerList = (ArrayList<CustomerProf>)objectInput.readObject(); //writes out all of the Customer Proifles that the user wants entered in from the inpput file to the customer list
+        customerList = (ArrayList<CustomerProf>)objectInput.readObject(); //writes out all Customer Profiles that the user wants to enter in from the input file to the customer list
     }
-
-
-
-
 }
