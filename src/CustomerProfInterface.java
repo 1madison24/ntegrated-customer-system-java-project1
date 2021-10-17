@@ -8,6 +8,31 @@ import java.io.Serializable;
                    --> used to recreate the object in memory
  */
 
-public class CustomerProfInterface {
+public class CustomerProfInterface implements Serializable{
 
+
+    void getUserChoice() {
+
+    }
+    void deleteCustomerProf() {
+
+    }
+    void findCustomerProf() {
+
+    }
+    void displayCustomerProf() {
+
+    }
+    void displayAllCustomerProf() {
+
+    }
+    void writeToDB() throws IOException {
+
+    }
+    void createNewCustomerProf() {
+
+    }
+    void createNewVehicleInfo() {
+
+    }
 }
