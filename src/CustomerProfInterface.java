@@ -20,8 +20,22 @@ public class CustomerProfInterface implements Serializable{
     void findCustomerProf() {
 
     }
-    void displayCustomerProf() {
+    void displayCustomerProf(CustomerProf customerProf) {
+        //print out everything in the Customer's Profile
+        System.out.println("Admin ID: " + customerProf.getadminID());
+        System.out.println("Customer's First Name: " + customerProf.getfirstName());
+        System.out.println("Customer's Last Name: " + customerProf.getlastName());
+        System.out.println("Customer's Home Phone Number: " + customerProf.getphone());
+        System.out.println("Customer's Home Address:" + customerProf.getAddress());
+        System.out.println("Household income: " + customerProf.getincome());
+        System.out.println("Current status of the customer: " + customerProf.getstatus());
+        System.out.println("Use of the vehicle: " + customerProf.getuse());
 
+        System.out.println("Customer's Vehicle Information")
+        System.out.println("Name of vehicle model:  " + customerProf.getvehicleInfo().getModel());
+        System.out.println("Year in which the vehicle was manufactured: " + customerProf.getvehicleInfo().getYear());
+        System.out.println("Type of vehicle: " + customerProf.getvehicleInfo().getType());
+        System.out.println("How the vehicle was acquired: " + customerProf.getvehicleInfo().getMethod());
     }
     void displayAllCustomerProf() {
 

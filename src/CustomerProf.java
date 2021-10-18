@@ -9,7 +9,7 @@ public class CustomerProf {
     private float income;
     private String status;
     private String use;
-    //private class vehicleInfo;
+    private class vehicleInfo;
 
     public CustomerProf() {
         super();
@@ -70,12 +70,12 @@ public class CustomerProf {
     public String getuse() {
         return use;
     }
-    //public String getvehicleInfo() {
-    //    return vehicleInfo;
-    //}
-    //public void UpdatevehicleInfo(class vehicleInfo){
-    // this.vehicleInfo = vehicleInfo;
-    //}
+    public String getvehicleInfo() {
+        return vehicleInfo;
+    }
+    public void UpdatevehicleInfo(class vehicleInfo){
+        this.vehicleInfo = vehicleInfo;
+    }
     public String toString() {
         return "CustomerProf [adminID =" + adminID + ", firstName =" + firstName + ", lastName =" + lastName +
                 ", address =" + address + ", phone =" + phone + ", income =" + income +
