@@ -1,4 +1,5 @@
-//import vehicleInfo;
+package CustomerProf;
+import VehicleInfo.VehicleInfo;
 //test
 public class CustomerProf {
     private String adminID;
@@ -9,10 +10,10 @@ public class CustomerProf {
     private float income;
     private String status;
     private String use;
-    //private class vehicleInfo;
+    VehicleInfo VehicleInfo;
 
     public CustomerProf(String person_adminID, String person_firstName, String person_lastName, String person_address,
-                        String person_phone, float person_income, String person_status, String person_use) {
+                        String person_phone, float person_income, String person_status, String person_use, VehicleInfo person_VehicleInfo) {
         adminID = person_adminID;
         firstName = person_firstName;
         lastName = person_lastName;
@@ -21,7 +22,7 @@ public class CustomerProf {
         income = person_income;
         status = person_status;
         use = person_use;
-        //vehicleInfo = person_vehicleInfo;
+        VehicleInfo = person_VehicleInfo;
 
     }
     public String getadminID() {
@@ -66,12 +67,12 @@ public class CustomerProf {
     public String getuse() {
         return use;
     }
-    //public String getvehicleInfo() {
-    //    return vehicleInfo;
-    //}
-    //public void UpdatevehicleInfo(class NewvehicleInfo){
-    // vehicleInfo = NewvehicleInfo;
-    //}
+    public VehicleInfo getvehicleInfo() {
+        return VehicleInfo;
+    }
+    public void UpdatevehicleInfo(VehicleInfo NewVehicleInfo){
+     VehicleInfo = NewVehicleInfo;
+    }
     public String toString() {
         return "CustomerProf [adminID =" + adminID + ", firstName =" + firstName + ", lastName =" + lastName +
                 ", address =" + address + ", phone =" + phone + ", income =" + income +

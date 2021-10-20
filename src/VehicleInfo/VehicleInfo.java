@@ -1,3 +1,4 @@
+package VehicleInfo;
 //keeps track of the details of the vehicle owned by the customer
 public class VehicleInfo {
     private String model;   //name of the vehicle model
