@@ -16,6 +16,7 @@ public class CustomerProfInterface implements Serializable{
     private String adminID; //stores adminID here after menu selection
     CustomerProf CustomerProf;
 
+
     /*public static void main (String[] args) {
         database.initializeDatabase(database.fileName);
     }
@@ -26,13 +27,13 @@ public class CustomerProfInterface implements Serializable{
     public CustomerProfInterface(String fileName) {
         filename = fileName;
         try {
-            getUserChoice();;
+            getUserChoice();
         }
         catch (IOException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
         catch (ClassNotFoundException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
     }
 
@@ -48,8 +49,9 @@ public class CustomerProfInterface implements Serializable{
             System.out.println("3. Modify a Customer's Profile");
             System.out.println("4. Create a new Customer's Profile");
             System.out.println("5. Delete a Customer's Profile");
-            System.out.println("6. Write to the Database");
-            System.out.println("7. Quit");
+            System.out.println("6. Initialize the Database");
+            System.out.println("7. Write to the Database");
+            System.out.println("8. Quit");
             input = Integer.parseInt(scan.nextLine()); //make sure input is integer and matches w/ a valid menu selection
             //adminID entered with menu options
             System.out.println("Enter adminID: ");
@@ -70,10 +72,13 @@ public class CustomerProfInterface implements Serializable{
             if(input == 5){
                 deleteCustomerProf();
             }
-            if(input == 6){
-                writeToDB();
+            if(input == 6) {
+                initDB();
             }
             if(input == 7){
+                writeToDB();
+            }
+            if(input == 8){
                 System.out.println("Quitting....");
                 variable = false;
             }
@@ -200,7 +205,7 @@ public class CustomerProfInterface implements Serializable{
             //Current status of the customer -- "Active" or "Inactive"
             System.out.println("Please enter new Status: ");
             String updatedStatus = updateScanner.nextLine();
-            while(!(updatedStatus.equals("Active")) || (updatedStatus.equals("Inactive"))) {
+            while(!((updatedStatus.equals("Active")) || (updatedStatus.equals("Inactive")))) {
                 System.out.println("Please enter \"Active\" or \"Inactive\"");
                 updatedStatus = updateScanner.nextLine();
             }
@@ -212,7 +217,7 @@ public class CustomerProfInterface implements Serializable{
             String newUse = updateScanner.nextLine();
 
             //Check if the inputted use is Business, Personal, or Both. if none, ask user again
-            while (!(newUse.equals("Business")) || (newUse.equals("Personal")) || (newUse.equals("Both"))) {
+            while (!((newUse.equals("Business")) || (newUse.equals("Personal")) || (newUse.equals("Both")))) {
                 System.out.println("Please enter \"Business\" or \"Personal\" or \"Both\"");
                 newUse = updateScanner.nextLine();
             }
@@ -234,7 +239,7 @@ public class CustomerProfInterface implements Serializable{
             String updatedType = updateScanner.nextLine();
 
             //check that th user input is valid
-            while(!(updatedType.equals("sedan")) || (updatedType.equals("hatchback")) || (updatedType.equals("luxury")) || (updatedType.equals("sport")) || (updatedType.equals("other"))) {
+            while(!((updatedType.equals("sedan")) || (updatedType.equals("hatchback")) || (updatedType.equals("luxury")) || (updatedType.equals("sport")) || (updatedType.equals("other")))) {
                 updatedType = updateScanner.nextLine();
             }
             updateProf.getvehicleInfo().updateType(updatedType);
@@ -245,7 +250,7 @@ public class CustomerProfInterface implements Serializable{
             String updatedMeth = updateScanner.nextLine();
 
             //check that the input is valid
-            while(!(updatedMeth.equals("new")) || (updatedMeth.equals("certified")) || (updatedMeth.equals("pre-owned")) || (updatedMeth.equals("used")) || (updatedMeth.equals("other"))) {
+            while(!((updatedMeth.equals("new")) || (updatedMeth.equals("certified")) || (updatedMeth.equals("pre-owned")) || (updatedMeth.equals("used")) || (updatedMeth.equals("other")))) {
                 System.out.println("Please enter \"new\", \"certified\", \"pre-owned\", \"used\" or \"other\"");
                 updatedMeth = updateScanner.nextLine();
             }
@@ -318,7 +323,7 @@ public class CustomerProfInterface implements Serializable{
         //Current status of the customer -- "Active" or "Inactive"
         System.out.println("Please enter new Status: ");
         String InputStatus = CustProfScanner.nextLine();
-        while(!(InputStatus.equals("Active")) || (InputStatus.equals("Inactive"))) {
+        while(!((InputStatus.equals("Active")) || (InputStatus.equals("Inactive")))) {
             System.out.println("Please enter \"Active\" or \"Inactive\"");
             InputStatus = CustProfScanner.nextLine();
         }
@@ -328,37 +333,17 @@ public class CustomerProfInterface implements Serializable{
         System.out.println("Please enter Use: ");
         String InputUse = CustProfScanner.nextLine();
         //Check if the inputted use is Business, Personal, or Both. if none, ask user again
-        while (!(InputUse.equals("Business")) || (InputUse.equals("Personal")) || (InputUse.equals("Both"))) {
+        while (!((InputUse.equals("Business")) || (InputUse.equals("Personal")) || (InputUse.equals("Both")))) {
             System.out.println("Please enter \"Business\" or \"Personal\" or \"Both\"");
             InputUse = CustProfScanner.nextLine();
         }
         String Newuse = InputUse;
 
-        System.out.println("Please enter new Model: ");
-        String InputModel = CustProfScanner.nextLine();
+        VehicleInfo newVehicleInfo;
+        newVehicleInfo = createNewVehicleInfo();
 
-
-        System.out.println("Please enter new Year: ");
-        String NewYear = CustProfScanner.nextLine();
-
-        //Type of vehicle -- sedan, hatchback, luxury, sport, other
-        System.out.println("Please enter Type: ");
-        String NewType = CustProfScanner.nextLine();
-        //check that th user input is valid
-        while(!(NewType.equals("sedan")) || (NewType.equals("hatchback")) || (NewType.equals("luxury")) || (NewType.equals("sport")) || (NewType.equals("other"))) {
-            NewType = CustProfScanner.nextLine();
-        }
-        String type = NewType;
-
-        //how vehicle was acquired -- new, certified, pre-owned, used, other
-        System.out.println("Please enter Method: ");
-        String NewMeth = CustProfScanner.nextLine();
-        //check that the input is valid
-        while(!(NewMeth.equals("new")) || (NewMeth.equals("certified")) || (NewMeth.equals("pre-owned")) || (NewMeth.equals("used")) || (NewMeth.equals("other"))) {
-            System.out.println("Please enter \"new\", \"certified\", \"pre-owned\", \"used\" or \"other\"");
-            NewMeth = CustProfScanner.nextLine();
-        }
-        String meth = NewMeth;
+        CustomerProf newCustomerProf = new CustomerProf(adminID, firstName, lastName, address, phone, income, Newstatus, Newuse, newVehicleInfo);
+        database.insertNewProfile(newCustomerProf);
     }
 
     VehicleInfo createNewVehicleInfo() {
@@ -372,8 +357,8 @@ public class CustomerProfInterface implements Serializable{
         String vehicleType = vehicleScanner.nextLine();
         System.out.println("Enter Customer's Vehicle Method");
         String vehicleMethod = vehicleScanner.nextLine();
-        VehicleInfo newVehicleInfo = new VehicleInfo(vehicleModel, vehicleYear, vehicleType, vehicleMethod);
-        return newVehicleInfo;
+        VehicleInfo newVehInfo = new VehicleInfo(vehicleModel, vehicleYear, vehicleType, vehicleMethod);
+        return newVehInfo;
     }
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println("Which file are you to edit?");
