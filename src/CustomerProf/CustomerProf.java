@@ -67,6 +67,9 @@ public class CustomerProf {
     public String getuse() {
         return use;
     }
+    public void UpdateUse(String newUse) {
+        use = newUse;
+    }
     public VehicleInfo getvehicleInfo() {
         return VehicleInfo;
     }
