@@ -15,6 +15,14 @@ public class CustomerProfInterface implements Serializable{
     private String adminID; //stores adminID here after menu selection
     CustomerProf CustomerProf;
 
+    /*public static void main (String[] args) {
+        database.initializeDatabase(database.fileName);
+    }
+     */
+    void initDB() throws IOException, ClassNotFoundException {
+        database.initializeDatabase(database.fileName);
+    } //--> Ask TA
+
     public void getUserChoice() throws IOException{
         //prompt user select a menu option
         System.out.println("Select menu option: ");
@@ -27,9 +35,8 @@ public class CustomerProfInterface implements Serializable{
             System.out.println("3. Modify a Customer's Profile");
             System.out.println("4. Create a new Customer's Profile");
             System.out.println("5. Delete a Customer's Profile");
-            System.out.println("6. Initialize Database");
-            System.out.println("7. Write to the Database");
-            System.out.println("8. Quit");
+            System.out.println("6. Write to the Database");
+            System.out.println("7. Quit");
             input = Integer.parseInt(scan.nextLine()); //make sure input is integer and matches w/ a valid menu selection
             //adminID entered with menu options
             System.out.println("Enter adminID: ");
@@ -51,12 +58,9 @@ public class CustomerProfInterface implements Serializable{
                 deleteCustomerProf();
             }
             if(input == 6){
-                initDB(); //might not need if we are initialzing the database at the very beginning
-            }
-            if(input == 7){
                 writeToDB();
             }
-            if(input == 8){
+            if(input == 7){
                 System.out.println("Quitting....");
                 variable = false;
             }
@@ -183,6 +187,10 @@ public class CustomerProfInterface implements Serializable{
             //Current status of the customer -- "Active" or "Inactive"
             System.out.println("Please enter new Status: ");
             String updatedStatus = updateScanner.nextLine();
+            while(!(updatedStatus.equals("Active")) || (updatedStatus.equals("Inactive"))) {
+                System.out.println("Please enter \"Active\" or \"Inactive\"");
+                updatedStatus = updateScanner.nextLine();
+            }
             updateProf.Updatestatus(updatedStatus);
         }
         if (input == 7) {
@@ -259,14 +267,90 @@ public class CustomerProfInterface implements Serializable{
             }
         }
     }
+    //will write all profiles currently in memory to the text file database that is provided to the application at application startup
     void writeToDB() throws IOException {
-
-
+        database.writeAllCustomerProf(database.fileName);
+        database.customerList.removeAll(database.customerList);
     }
+
     void createNewCustomerProf() {
+        Scanner inputadminID = new Scanner(System.in);
+        System.out.println("Eneter an adminID");
+        String adminID = inputadminID.nextLine();
 
+        //Creates new customer profile based on what the user has inputted
+        Scanner CustProfScanner = new Scanner(System.in);
+        System.out.println("Enter Customer's First Name");
+        String firstName = CustProfScanner.nextLine();
+        System.out.println("Enter Customer's Last Name");
+        String lastName = CustProfScanner.nextLine();
+        System.out.println("Enter Customer's Phone Number");
+        String phone = CustProfScanner.nextLine();
+        System.out.println("Enter Customer's Address");
+        String address = CustProfScanner.nextLine();
+
+        System.out.println("Enter Customer's Income");
+        boolean check = false;
+        float income = 0;
+        while(!(check)) {
+            try {
+                income = Float.parseFloat(CustProfScanner.nextLine());
+                check = true;
+            }
+            catch (Exception NumberFormatException) {
+                System.out.println("Please enter a number for their Income");
+            }
+        }
+
+        //Current status of the customer -- "Active" or "Inactive"
+        System.out.println("Please enter new Status: ");
+        String InputStatus = CustProfScanner.nextLine();
+        while(!(InputStatus.equals("Active")) || (InputStatus.equals("Inactive"))) {
+            System.out.println("Please enter \"Active\" or \"Inactive\"");
+            InputStatus = CustProfScanner.nextLine();
+        }
+        String Newstatus = InputStatus;
+
+        //Use of the vehicle -- "Business" or "Personal" or "Both"
+        System.out.println("Please enter Use: ");
+        String InputUse = CustProfScanner.nextLine();
+        //Check if the inputted use is Business, Personal, or Both. if none, ask user again
+        while (!(InputUse.equals("Business")) || (InputUse.equals("Personal")) || (InputUse.equals("Both"))) {
+            System.out.println("Please enter \"Business\" or \"Personal\" or \"Both\"");
+            InputUse = CustProfScanner.nextLine();
+        }
+        String Newuse = InputUse;
+
+        System.out.println("Please enter new Model: ");
+        String InputModel = CustProfScanner.nextLine();
+
+
+        System.out.println("Please enter new Year: ");
+        String NewYear = CustProfScanner.nextLine();
+
+        //Type of vehicle -- sedan, hatchback, luxury, sport, other
+        System.out.println("Please enter Type: ");
+        String NewType = CustProfScanner.nextLine();
+        //check that th user input is valid
+        while(!(NewType.equals("sedan")) || (NewType.equals("hatchback")) || (NewType.equals("luxury")) || (NewType.equals("sport")) || (NewType.equals("other"))) {
+            NewType = CustProfScanner.nextLine();
+        }
+        String type = NewType;
+
+        //how vehicle was acquired -- new, certified, pre-owned, used, other
+        System.out.println("Please enter Method: ");
+        String NewMeth = CustProfScanner.nextLine();
+        //check that the input is valid
+        while(!(NewMeth.equals("new")) || (NewMeth.equals("certified")) || (NewMeth.equals("pre-owned")) || (NewMeth.equals("used")) || (NewMeth.equals("other"))) {
+            System.out.println("Please enter \"new\", \"certified\", \"pre-owned\", \"used\" or \"other\"");
+            NewMeth = CustProfScanner.nextLine();
+        }
+        String meth = NewMeth;
     }
+
     void createNewVehicleInfo() {
+        // will have the user input information for the vehicle information of the customer
+        Scanner inputScanner = new Scanner(System.in);
 
     }
 }
