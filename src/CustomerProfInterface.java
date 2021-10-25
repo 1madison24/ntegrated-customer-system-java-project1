@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.io.Serializable;
 import CustomerProf.CustomerProf;
+import VehicleInfo.VehicleInfo;
 /* Object serialization = object can be represented as a sequence of bytes that includes
     the object's data, info about the object's type, and the types of data stores in the object
    After serialized object is written into a file, it can be read from that file and
@@ -22,8 +23,20 @@ public class CustomerProfInterface implements Serializable{
     void initDB() throws IOException, ClassNotFoundException {
         database.initializeDatabase(database.fileName);
     } //--> Ask TA
+    public CustomerProfInterface(String fileName) {
+        filename = fileName;
+        try {
+            getUserChoice();;
+        }
+        catch (IOException e) {
+            e.printStackTrace();;
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();;
+        }
+    }
 
-    public void getUserChoice() throws IOException{
+    public void getUserChoice() throws IOException, ClassNotFoundException {
         //prompt user select a menu option
         System.out.println("Select menu option: ");
         Scanner scan = new Scanner(System.in);
@@ -348,9 +361,24 @@ public class CustomerProfInterface implements Serializable{
         String meth = NewMeth;
     }
 
-    void createNewVehicleInfo() {
+    VehicleInfo createNewVehicleInfo() {
         // will have the user input information for the vehicle information of the customer
-        Scanner inputScanner = new Scanner(System.in);
-
+        Scanner vehicleScanner = new Scanner(System.in);
+        System.out.println("Enter Customer's Model");
+        String vehicleModel = vehicleScanner.nextLine();
+        System.out.println("Enter Customer's Vehicle's Year");
+        String vehicleYear = vehicleScanner.nextLine();
+        System.out.println("Enter Customer's Vehicle Type");
+        String vehicleType = vehicleScanner.nextLine();
+        System.out.println("Enter Customer's Vehicle Method");
+        String vehicleMethod = vehicleScanner.nextLine();
+        VehicleInfo newVehicleInfo = new VehicleInfo(vehicleModel, vehicleYear, vehicleType, vehicleMethod);
+        return newVehicleInfo;
+    }
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        System.out.println("Which file are you to edit?");
+        Scanner fill = new Scanner(System.in);
+        filename = fill.next();
+        new CustomerProfInterface(filename);
     }
 }
