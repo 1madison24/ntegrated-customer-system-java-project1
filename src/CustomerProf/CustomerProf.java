@@ -1,7 +1,12 @@
 package CustomerProf;
 import VehicleInfo.VehicleInfo;
 //test
+
+/* Keeps track of different characteristics of a customer’s profile, i.e., name, address,
+  phone number, number of years since the individual is a customer, customer status (active or inactive),
+  whether the vehicle is for personal or business use or both */
 public class CustomerProf {
+    //the following information about the customer are kept private
     private String adminID;
     private String firstName;
     private String lastName;
@@ -10,10 +15,12 @@ public class CustomerProf {
     private float income;
     private String status;
     private String use;
-    VehicleInfo VehicleInfo;
+    VehicleInfo VehicleInfo; //an attribute
+
 
     public CustomerProf(String person_adminID, String person_firstName, String person_lastName, String person_address,
                         String person_phone, float person_income, String person_status, String person_use, VehicleInfo person_VehicleInfo) {
+        //initialization
         adminID = person_adminID;
         firstName = person_firstName;
         lastName = person_lastName;
@@ -31,48 +38,56 @@ public class CustomerProf {
     public String getfirstName() {
         return firstName;
     }
+    //replace the old information stored in firstName with the new first name
     public void UpdatefirstName(String NewfirstName){
         firstName = NewfirstName;
     }
     public String getlastName() {
         return lastName;
     }
+    //replace the old information stored in lastName with the new last name
     public void UpdatelastName(String NewlastName){
         lastName = NewlastName;
     }
     public String getAddress() {
         return address;
     }
+    //replace the old information stored in address with the new address of the customer
     public void UpdateAddress(String Newaddress){
         address = Newaddress;
     }
     public String getphone() {
         return phone;
     }
+    //replace the old information stored in phone with the new phonenumber
     public void Updatephone(String Newphone){
         phone = Newphone;
     }
     public float getincome() {
         return income;
     }
+    //replace the old information stored in income with the new income information of the customer
     public void Updateincome(float Newincome){
         income = Newincome;
     }
     public String getstatus() {
         return status;
     }
+    //replace the old info stored in status with the customer's new status
     public void Updatestatus(String Newstatus){
         status = Newstatus;
     }
     public String getuse() {
         return use;
     }
+    //replace the old info stored in use with the customer's new use
     public void UpdateUse(String newUse) {
         use = newUse;
     }
     public VehicleInfo getvehicleInfo() {
         return VehicleInfo;
     }
+    //update the customer's vehicle information
     public void UpdatevehicleInfo(VehicleInfo NewVehicleInfo){
      VehicleInfo = NewVehicleInfo;
     }
@@ -163,6 +178,23 @@ public class CustomerProf {
 
 
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
