@@ -46,6 +46,7 @@ public class CustomerProfDB implements Serializable{
                 break;
             }
         }
+        //checks if the customer profile is in the database or not
         if(currentCustomerIndex == -1) {
             System.out.println("Customer profile is not in the database.");
             return null;
@@ -55,7 +56,7 @@ public class CustomerProfDB implements Serializable{
         }
     }
     public CustomerProf findFirstProfile() {
-        if(numCustomer <= 0) {
+        if(numCustomer <= 0) { //if there are no profiles in the database, then there will be no first profile
             return null;
         }
         else{
@@ -68,12 +69,28 @@ public class CustomerProfDB implements Serializable{
         currentCustomerIndex++;
         return nextCustomer;
     }
-    public void writeAllCustomerProf(String profilesss) throws IOException {
-        FileOutputStream output = new FileOutputStream((profilesss));
-        ObjectOutputStream objectOutput = new ObjectOutputStream(output);
-        objectOutput.writeObject(customerList); //will write out all the profiles from CustomerProf into the destination file
-        //objectOutput.close(); //close output stream
+
+    public void writeAllCustomerProf(String fileName) throws IOException{
+        // create FileWriter for file w/ file path newName (will be clearing the file and rewriting it each time method is called)
+        FileWriter writer = new FileWriter(fileName);
+        for (CustomerProf customerProf: customerList) { // loop through all customers in the customerList
+            writer.write(customerProf.getadminID() + " " +
+                    customerProf.getfirstName() + " " +
+                    customerProf.getlastName() + " " +
+                    customerProf.getphone() + " " +
+                    customerProf.getAddress() + " " +
+                    customerProf.getincome() + " " +
+                    customerProf.getstatus() + " " +
+                    customerProf.getuse() + " " +
+                    customerProf.getvehicleInfo().getModel() + " " +
+                    customerProf.getvehicleInfo().getYear() + " " +
+                    customerProf.getvehicleInfo().getType() + " " +
+                    customerProf.getvehicleInfo().getMethod() + " " + "\n"
+                );
+        }
+        writer.close();      // close FileWriter
     }
+
     public void initializeDatabase(String PROFILE) throws IOException, ClassNotFoundException{
         FileInputStream input = new FileInputStream(PROFILE);
         ObjectInputStream objectInput = new ObjectInputStream(input);
