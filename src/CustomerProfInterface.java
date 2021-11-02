@@ -10,22 +10,49 @@ import VehicleInfo.VehicleInfo;
                    --> used to recreate the object in memory
  */
 
+
+/* Encapsulates the functionality for a menu driven interface, with each of
+its methods containing the required code for receiving inputs from the user and displaying results. Note
+that this interface is intended for use by various types of administrative personnel to access, create,
+change, and manipulate entries in the CustomerProfDB
+ */
 public class CustomerProfInterface implements Serializable{
-    static String filename;
-    CustomerProfDB database = new CustomerProfDB("dbFile"); //create CustomerProfDB object for initializing/writing
+    static String fileName;
+    CustomerProfDB database = new CustomerProfDB("dbTest.txt"); //create CustomerProfDB object for initializing/writing
     private String adminID; //stores adminID here after menu selection
     CustomerProf CustomerProf;
 
-
-    /*public static void main (String[] args) {
-        database.initializeDatabase(database.fileName);
-    }
-     */
     void initDB() throws IOException, ClassNotFoundException {
-        database.initializeDatabase(database.fileName);
-    } //--> Ask TA
-    public CustomerProfInterface(String fileName) {
+        Scanner initialize = new Scanner(System.in);
+
+        while (true) {
+            // System.out.print("Enter a file path to be used: ");
+            try {
+                database.initializeDatabase(fileName);
+                break;
+            } catch (FileNotFoundException e) {
+                System.out.println("Error initializing database. File not found.");
+                break;
+            } catch (ClassNotFoundException e) {
+                System.out.println("Error initializing database.");
+                break;
+            }
+        }
+        System.out.println("DB initialization was successful.");
+        initialize.close();
+    }
+
+    //The Constructor
+    /*
+    Accepts the name of the file which acts as the database for the user interface
+    Calls the CustomerProfDB to:
+        - initialize the database
+        - read from the database file
+    All profiles in memory are written to the database file
+     */
+    public CustomerProfInterface(String filename) {
         filename = fileName;
+        database = new CustomerProfDB(fileName);
         try {
             getUserChoice();
         }
@@ -37,6 +64,10 @@ public class CustomerProfInterface implements Serializable{
         }
     }
 
+
+    /*
+       Presents user w/ menu of options where each selection is recorded and the appropriate method is called
+     */
     public void getUserChoice() throws IOException, ClassNotFoundException {
         //prompt user select a menu option
         System.out.println("Select menu option: ");
@@ -84,10 +115,13 @@ public class CustomerProfInterface implements Serializable{
             }
         }
     }
+
+
+    //Will delete the customer's profile when provided that profile's adminID and last name
     void deleteCustomerProf() {
         //let's find the customer's profile based on adminID and last name
         Scanner inputadminID = new Scanner(System.in);
-        System.out.println("Enter adminID: ");
+        System.out.println("Enter customer's adminID: ");
         String adminID = inputadminID.nextLine();
         Scanner findScan = new Scanner(System.in);
         System.out.println("Enter customer's last name: ");
@@ -121,16 +155,23 @@ public class CustomerProfInterface implements Serializable{
             displayCustomerProf(database.findProfile(adminID, lastName));
         }
     }
+
+    //CustomerProf Modifications
+    /*
+    User can modify a profile by selecting which part of the profile they would
+    like to change.
+     */
     void updateCustomerProf() {
-        Scanner inputadminID = new Scanner(System.in);
+        //first ask for profile's adminID and last name
+        Scanner inputadminID = new Scanner(System.in);//scanner for getting the user's input
         System.out.println("Enter adminID: ");
         String adminID = inputadminID.nextLine();
 
-        Scanner updateScanner = new Scanner(System.in);
-
+        Scanner updateScanner = new Scanner(System.in);//scanner for user input
         System.out.println("Enter last name: ");
         String lastName = updateScanner.nextLine();
 
+        //if the user inputs are not found in the database, then let the user know that the profile is not found in the database
         CustomerProf updateProf = database.findProfile(adminID, lastName);
         if (updateProf == null) {
             System.out.println("Profile not in database");
@@ -195,6 +236,7 @@ public class CustomerProfInterface implements Serializable{
                     check = true;
                 }
                 catch (Exception NumberFormatException) {
+                    //ensures that the input
                     System.out.println("Please re-enter a valid number for Income");
                     updatedValue = updateScanner.nextLine();
                 }
@@ -205,6 +247,7 @@ public class CustomerProfInterface implements Serializable{
             //Current status of the customer -- "Active" or "Inactive"
             System.out.println("Please enter new Status: ");
             String updatedStatus = updateScanner.nextLine();
+            //while loop checks that the user is entering the correct attribute value
             while(!((updatedStatus.equals("Active")) || (updatedStatus.equals("Inactive")))) {
                 System.out.println("Please enter \"Active\" or \"Inactive\"");
                 updatedStatus = updateScanner.nextLine();
@@ -223,6 +266,11 @@ public class CustomerProfInterface implements Serializable{
             }
             updateProf.UpdateUse(newUse);
         }
+        /*
+        Options 8 through 11 is where the customer is able to modify attributes
+        from the VehicleInfo class. The user will be asked to select which attribute
+        that they want to change and then prompted for a new attribute value
+         */
         if (input == 8) {
             System.out.println("Please enter new Model: ");
             String newModel = updateScanner.nextLine();
@@ -274,10 +322,15 @@ public class CustomerProfInterface implements Serializable{
         System.out.println("Type of vehicle: " + customerProf.getvehicleInfo().getType());
         System.out.println("How the vehicle was acquired: " + customerProf.getvehicleInfo().getMethod());
     }
+
+    /*
+   Displays all the customer profiles in the ICS provided the adminID
+     */
     void displayAllCustomerProf() {
-        Scanner inputadminID = new Scanner(System.in);
-        System.out.println("Enter adminID: ");
+        Scanner inputadminID = new Scanner(System.in); //for user input
+        System.out.println("Enter adminID: "); //prompts fo the adminID
         String adminID = inputadminID.nextLine();
+        //prints out the corresponding profiles for that adminID onto the screen one after another
         for(int i = 0; i < database.customerList.size(); i++) {
             CustomerProf TempCustomerProf  = database.customerList.get(i);
             if(TempCustomerProf.getadminID().equals(adminID)) {
@@ -287,16 +340,27 @@ public class CustomerProfInterface implements Serializable{
     }
     //will write all profiles currently in memory to the text file database that is provided to the application at application startup
     void writeToDB() throws IOException {
-        database.writeAllCustomerProf(database.fileName);
-        database.customerList.removeAll(database.customerList);
+        try{
+            database.writeAllCustomerProf(fileName);   // write all customer profiles to fileName
+            System.out.println("Writing to DB was successful.");    // print success
+        }
+        // catch exceptions that may occur when calling write all
+        catch(IOException e){
+            System.out.println("Error writing to database.");
+        }
     }
 
-    void createNewCustomerProf() {
-        Scanner inputadminID = new Scanner(System.in);
-        System.out.println("Eneter an adminID");
-        String adminID = inputadminID.nextLine();
 
+    /*
+    All prompted inputs are used to create an instance of a customer profile
+    This method will also invoke the updateVehicleInfo method so that the new customer profile
+    also has their vehicle information
+     */
+    void createNewCustomerProf() {
         //Creates new customer profile based on what the user has inputted
+        Scanner inputadminID = new Scanner(System.in);
+        System.out.println("Enter an adminID");
+        String adminID = inputadminID.nextLine();
         Scanner CustProfScanner = new Scanner(System.in);
         System.out.println("Enter Customer's First Name");
         String firstName = CustProfScanner.nextLine();
@@ -339,9 +403,11 @@ public class CustomerProfInterface implements Serializable{
         }
         String Newuse = InputUse;
 
+        //obtain the new vehicle information from the user
         VehicleInfo newVehicleInfo;
         newVehicleInfo = createNewVehicleInfo();
 
+        //insert new profile
         CustomerProf newCustomerProf = new CustomerProf(adminID, firstName, lastName, address, phone, income, Newstatus, Newuse, newVehicleInfo);
         database.insertNewProfile(newCustomerProf);
     }
@@ -357,13 +423,14 @@ public class CustomerProfInterface implements Serializable{
         String vehicleType = vehicleScanner.nextLine();
         System.out.println("Enter Customer's Vehicle Method");
         String vehicleMethod = vehicleScanner.nextLine();
+        //now the new customer profile will also have its vehicle information
         VehicleInfo newVehInfo = new VehicleInfo(vehicleModel, vehicleYear, vehicleType, vehicleMethod);
         return newVehInfo;
     }
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println("Which file are you to edit?");
         Scanner fill = new Scanner(System.in);
-        filename = fill.next();
-        new CustomerProfInterface(filename);
+        fileName = fill.next();
+        new CustomerProfInterface(fileName);
     }
 }
