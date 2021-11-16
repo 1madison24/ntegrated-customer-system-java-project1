@@ -16,7 +16,7 @@ public class IntCustSysMenu {
     private JRadioButton findDisplayProfileRadioButton;
     private JRadioButton displayAllProfilesRadioButton;
 
-    public IntPatSysMenu(){
+    public IntCustSysMenu(){
         selectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
