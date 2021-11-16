@@ -1,5 +1,6 @@
 package projectGUI;
 
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,7 +53,7 @@ public class CreateProfile {
                 DBController prof = new DBController();
                 getPath pathname = new getPath();
                 Path path = pathname.getIt();
-                prof.addprofile(userProf, path);
+                prof.addProfile(userProf, path);
                 JOptionPane.showMessageDialog(null, "Success!");
             }
         });
