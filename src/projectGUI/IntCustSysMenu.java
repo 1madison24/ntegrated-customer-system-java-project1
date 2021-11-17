@@ -47,7 +47,7 @@ public class IntCustSysMenu {
     public static void main(String[] args){
         JFrame f = new JFrame("Integrated Customer System");
         f.setContentPane(new IntCustSysMenu().menuPanel);
-        f.setDefualtCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
         f.setVisible(true);
         Scanner in = new Scanner(System.in);

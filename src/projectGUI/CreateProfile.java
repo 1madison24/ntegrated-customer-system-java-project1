@@ -61,7 +61,7 @@ public class CreateProfile {
             }
         });
     }
-        public void openGui () {
+        public void openGUI () {
             JFrame f = new JFrame("Integrated Customer System"); //creates an instance
             f.setContentPane(new CreateProfile().createPanel);
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -101,5 +101,5 @@ public class CreateProfile {
 
             return profile;
         }
-    }
+}
 
