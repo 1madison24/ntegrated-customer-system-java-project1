@@ -1,5 +1,5 @@
 package projectGUI;
-
+import CustomerProf.CustomerProf;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,9 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.ArrayList;
 
+
 public class CreateProfile {
+
     private JPanel createPanel;
     private JTextField admin;
     private JTextField firstName;
@@ -25,6 +27,7 @@ public class CreateProfile {
     private JButton submitButton;
 
     public CreateProfile() {
+        CustomerProf cp = new CustomerProf();
         //Adding the options to the Use drop down menu
         comboBox1.addItem("Business");
         comboBox1.addItem("Personal");
