@@ -11,24 +11,25 @@ import java.util.ArrayList;
 
 public class CreateProfile {
 
-    private JPanel createPanel;
-    private JTextField admin;
-    private JTextField firstName;
-    private JTextField lastName;
-    private JTextField address;
-    private JTextField phone;
-    private JTextField income;
-    private JComboBox comboBox1; // Use
-    private JComboBox comboBox2; // Status
-    private JTextField model;
-    private JTextField year;
-    private JComboBox comboBox3; //Type
-    private JComboBox comboBox4; //Method
-    private JButton submitButton;
+    private JPanel createPanel = new JPanel();
+    private JTextField admin = new JTextField();
+    private JTextField firstName = new JTextField();
+    private JTextField lastName = new JTextField();
+    private JTextField address = new JTextField();
+    private JTextField phone = new JTextField();
+    private JTextField income = new JTextField();
+    private JComboBox comboBox1 = new JComboBox(); // Use
+    private JComboBox comboBox2 = new JComboBox(); // Status
+    private JTextField model = new JTextField();
+    private JTextField year = new JTextField();
+    private JComboBox comboBox3 = new JComboBox();; //Type
+    private JComboBox comboBox4 = new JComboBox();; //Method
+    private JButton submitButton = new JButton();
 
     public CreateProfile() {
-        CustomerProf cp = new CustomerProf();
+//        CustomerProf cp = new CustomerProf();
         //Adding the options to the Use drop down menu
+
         comboBox1.addItem("Business");
         comboBox1.addItem("Personal");
         comboBox1.addItem("Both");
@@ -64,6 +65,8 @@ public class CreateProfile {
         public void openGUI () {
             JFrame f = new JFrame("Integrated Customer System"); //creates an instance
             f.setContentPane(new CreateProfile().createPanel);
+            f.add(comboBox1);
+            f.add(comboBox4);
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             f.pack();
             f.setVisible(true); //show the actual frame
@@ -74,13 +77,13 @@ public class CreateProfile {
             String id = admin.getText();
             String first = firstName.getText();
             String last = lastName.getText();
-            String address = address.getText();
-            String phone = phone.getText();
-            String income = income.getText();
+            String address1 = address.getText();
+            String phone1 = phone.getText();
+            String income1 = income.getText();
             String use = (String) comboBox1.getSelectedItem();
             String status = (String) comboBox2.getSelectedItem();
-            String model = model.getText();
-            String year = year.getText();
+            String model1 = model.getText();
+            String year1 = year.getText();
             String type = (String) comboBox3.getSelectedItem();
             String method = (String) comboBox4.getSelectedItem();
 
@@ -89,13 +92,13 @@ public class CreateProfile {
             profile.add(id);
             profile.add(first);
             profile.add(last);
-            profile.add(address);
-            profile.add(phone);
-            profile.add(income);
+            profile.add(address1);
+            profile.add(phone1);
+            profile.add(income1);
             profile.add(use);
             profile.add(status);
-            profile.add(model);
-            profile.add(year);
+            profile.add(model1);
+            profile.add(year1);
             profile.add(type);
             profile.add(method);
 

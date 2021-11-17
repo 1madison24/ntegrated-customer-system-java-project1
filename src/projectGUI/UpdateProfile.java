@@ -6,7 +6,7 @@ import java.nio.file.Path;
 
 
 public class UpdateProfile {
-    private JPanel updatePanel;
+    private JPanel updatePanel = new JPanel();
     private JTextField admin;
     private JTextField last;
     private JComboBox updateField;
