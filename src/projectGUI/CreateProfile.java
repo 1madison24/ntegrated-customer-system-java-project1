@@ -65,8 +65,19 @@ public class CreateProfile {
         public void openGUI () {
             JFrame f = new JFrame("Integrated Customer System"); //creates an instance
             f.setContentPane(new CreateProfile().createPanel);
+            f.add(admin);
+            f.add(firstName);
+            f.add(lastName);
+            f.add(address);
+            f.add(phone);
+            f.add(income);
             f.add(comboBox1);
+            f.add(comboBox2);
+            f.add(model);
+            f.add(year);
+            f.add(comboBox3);
             f.add(comboBox4);
+            f.add(submitButton);
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             f.pack();
             f.setVisible(true); //show the actual frame
