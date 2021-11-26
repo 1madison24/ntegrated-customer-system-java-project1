@@ -12,9 +12,20 @@ import java.util.List;
 public class DBController {
 
     public static void main(String[] args){
-        CreateProfile v = new CreateProfile();
-        v.openGUI();
-//        v.buildProf();
+        IntCustSysMenu i = new IntCustSysMenu();
+        i.openGUI();
+
+
+        //CreateProfile v = new CreateProfile();
+        //v.openGUI();
+        //DeleteProfile y = new DeleteProfile();
+        //y.openGUI();
+        //UpdateProfile z = new UpdateProfile();
+        //z.openGUI();
+        //DispProfile1 j = new DispProfile1();
+        //j.openGUI();
+        //MultLogin k = new MultLogin();
+        //k.openGUI();
 
     }
     public static void addProfile(List<String> userInfo, Path path){

@@ -7,10 +7,10 @@ import java.nio.file.Path;
 
 public class UpdateProfile {
     private JPanel updatePanel = new JPanel();
-    private JTextField admin;
-    private JTextField last;
-    private JComboBox updateField;
-    private JButton findButton;
+    private JTextField admin = new JTextField(10);
+    private JTextField last = new JTextField(10);
+    private JComboBox updateField = new JComboBox();
+    private JButton findButton = new JButton("Submit");
 
     public UpdateProfile() {
 
@@ -53,8 +53,16 @@ public class UpdateProfile {
     public void openGUI() {
         JFrame f = new JFrame("Integrated Patient System");
         f.setContentPane(new UpdateProfile().updatePanel);
+        f.add(updatePanel);
+        f.add(new JLabel("Admin ID:", SwingConstants.RIGHT), f);
+        f.add(admin);
+        f.add(new JLabel("Last Name:", SwingConstants.RIGHT), f);
+        f.add(last);
+        f.add(updateField);
+        f.add(findButton);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
         f.setVisible(true);
+        f.setSize(200,400);
     }
 }

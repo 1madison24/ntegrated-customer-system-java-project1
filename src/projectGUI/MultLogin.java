@@ -7,9 +7,9 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class MultLogin {
-    private JTextField adminID;
-    private JButton submit;
-    private JPanel multLog;
+    private JTextField adminID = new JTextField(10);
+    private JButton submit = new JButton("Submit");
+    private JPanel multLog = new JPanel();
 
     public MultLogin() {
 
@@ -37,9 +37,13 @@ public class MultLogin {
     public void openGUI(){
         JFrame f = new JFrame("Integrated Patient System");    //creates instance of a frame
         f.setContentPane(new MultLogin().multLog);
+        f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
+        f.add(adminID);
+        f.add(submit);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
-        f.setVisible(true); //making the frame visible
+        f.setVisible(true);
+        f.setSize(200,400);
     }
 }
 
