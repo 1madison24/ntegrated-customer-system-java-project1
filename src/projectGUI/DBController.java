@@ -58,51 +58,51 @@ public class DBController {
     }
 
     public static List<String> getProfileByLastName(String Lastname, String adminID, Path path){
-       List<String> allProfiles = new ArrayList<>();
-       List<String> desiredProfile = new ArrayList<>();
-       try {
-           allProfiles = Files.readAllLines(path);
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-       int start = 0;
-       for (int i= 2; i<allProfiles.size(); i++){
-           if(adminID.equals(allProfiles.get(i-2)) && Lastname.equals(allProfiles.get(i))){
-               start = i - 2;
-               for(int j = start; j< (start+12); j++){
-                   desiredProfile.add(allProfiles.get(j));
-               }
-           }
+        List<String> allProfiles = new ArrayList<>();
+        List<String> desiredProfile = new ArrayList<>();
+        try {
+            allProfiles = Files.readAllLines(path);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-       return desiredProfile;
+        int begin = 0;
+        for (int i= 2; i<allProfiles.size(); i++){
+            if(adminID.equals(allProfiles.get(i-2)) && Lastname.equals(allProfiles.get(i))){
+                begin = i - 2;
+                for(int j = begin; j< (begin+12); j++){
+                    desiredProfile.add(allProfiles.get(j));
+                }
+            }
+        }
+        return desiredProfile;
     }
-    public static void deleteProfileByLastname(String Lastname, String adminID, Path path){
-       List<String> allProfiles = new ArrayList<>();
-       try {
-           allProfiles = Files.readAllLines(path);
-       } catch (IOException e){
-           e.printStackTrace();
-       }
-       int start = 0;
-       for (int i = 2; i < allProfiles.size(); i++){
-           if(adminID.equals(allProfiles.get(i-2)) && Lastname.equals(allProfiles.get(i))){
-               start = i -2;
-               for(int j = start; j<(start+12); j++){
-                   allProfiles.remove(start);
-               }
-               break;
-           }
-       }
-       try {
-           Files.delete(path);
-       } catch(IOException e){
-           e.printStackTrace();
-       }
-       try {
-           Files.createFile(path);
-       } catch (IOException e){
-           e.printStackTrace();
-       }
+    public static void deleteProfileByLastname(String lastname, String adminID, Path path){
+        List<String> allProfiles = new ArrayList<>();
+        try {
+            allProfiles = Files.readAllLines(path);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        int begin = 0;
+        for (int i = 2; i < allProfiles.size(); i++){
+            if(adminID.equals(allProfiles.get(i-2)) && lastname.equals(allProfiles.get(i))){
+                begin = i -2;
+                for(int j = begin; j<(begin+12); j++){
+                    allProfiles.remove(begin);
+                }
+                break;
+            }
+        }
+        try {
+            Files.delete(path);
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+        try {
+            Files.createFile(path);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         for (int i = 0; i < allProfiles.size(); i++){
             allProfiles.set(i, allProfiles.get(i) + "\n");
             try {
@@ -112,7 +112,7 @@ public class DBController {
             }
         }
     }
-    public static void updateProfileByLastName(String Lastname, String updatedInfo, int indexOfUpdate, String adminID, Path path){
+    public static void updateProfileByLastName(String lastname, String updatedInfo, int indexOfUpdate, String adminID, Path path){
         List<String> allProfiles = new ArrayList<>();
         int delDetail = 0;
         try {
@@ -122,7 +122,7 @@ public class DBController {
         }
         int start = 0;
         for (int i = 2; i<allProfiles.size(); i++){
-            if(adminID.equals(allProfiles.get(i-2))&& Lastname.equals(allProfiles.get(i))){
+            if(adminID.equals(allProfiles.get(i-2))&& lastname.equals(allProfiles.get(i))){
                 start = i-2;
                 delDetail = start+indexOfUpdate;
             }
@@ -144,7 +144,7 @@ public class DBController {
             }
         }
     }
-    public static boolean searchProfile(String Lastname, String adminID, Path path){
+    public static boolean searchProfile(String lastname, String adminID, Path path){
         List<String> allProfiles = new ArrayList<>();
         boolean select = false;
         try {
@@ -153,7 +153,7 @@ public class DBController {
             e.printStackTrace();
         }
         for (int i = 2; i<allProfiles.size(); i++){
-            if(adminID.equals(allProfiles.get(i-2)) && Lastname.equals(allProfiles.get(i))){
+            if(adminID.equals(allProfiles.get(i-2)) && lastname.equals(allProfiles.get(i))){
                 select = true;
             }
         }
