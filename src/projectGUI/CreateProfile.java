@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-public class CreateProfile {
+public class CreateProfile {  
+    //this block of code is for creating the textboxes 
     private JPanel createPanel = new JPanel();
     private JTextField admin = new JTextField(10);
     private JTextField firstName = new JTextField(10);
