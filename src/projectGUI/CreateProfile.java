@@ -98,7 +98,7 @@ public class CreateProfile {
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             f.pack();
             f.setVisible(true); //show the actual frame
-            f.setSize(200,400);
+            f.setSize(160,600);
         }
     public List<String> buildProf() {
         //Gets all the User Inputs from the boxes
