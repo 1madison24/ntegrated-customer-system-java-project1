@@ -47,6 +47,7 @@ public class CreateProfile {
         comboBox3.addItem("Hatchback");
         comboBox3.addItem("Luxury");
         comboBox3.addItem("Sport");
+        comboBox3.addItem("Other");
 
         //Adding the options to the Method drop down menu
         comboBox4.setSize(120, 2);
@@ -67,39 +68,39 @@ public class CreateProfile {
             }
         });
     }
-        public void openGUI () {
-            JFrame f = new JFrame("Integrated Customer System"); //creates an instance
-            f.setContentPane(new CreateProfile().createPanel);
-            f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
-            f.add(admin);
-            f.add(new JLabel("First Name:", SwingConstants.LEFT), f);
-            f.add(firstName);
-            f.add(new JLabel("Last Name:", SwingConstants.LEFT), f);
-            f.add(lastName);
-            f.add(new JLabel("Address:", SwingConstants.LEFT), f);
-            f.add(address);
-            f.add(new JLabel("Phone:", SwingConstants.LEFT), f);
-            f.add(phone);
-            f.add(new JLabel("Income:", SwingConstants.LEFT), f);
-            f.add(income);
-            f.add(new JLabel("Use:", SwingConstants.LEFT), f);
-            f.add(comboBox1);
-            f.add(new JLabel("Status:", SwingConstants.LEFT), f);
-            f.add(comboBox2);
-            f.add(new JLabel("Model:", SwingConstants.LEFT), f);
-            f.add(model);
-            f.add(new JLabel("Year:", SwingConstants.LEFT), f);
-            f.add(year);
-            f.add(new JLabel("Type:", SwingConstants.LEFT), f);
-            f.add(comboBox3);
-            f.add(new JLabel("Method:", SwingConstants.LEFT), f);
-            f.add(comboBox4);
-            f.add(submitButton);
-            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            f.pack();
-            f.setVisible(true); //show the actual frame
-            f.setSize(200,400);
-        }
+    public void openGUI () {
+        JFrame f = new JFrame("Integrated Customer System"); //creates an instance
+        f.setContentPane(new CreateProfile().createPanel);
+        f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
+        f.add(admin);
+        f.add(new JLabel("First Name:", SwingConstants.LEFT), f);
+        f.add(firstName);
+        f.add(new JLabel("Last Name:", SwingConstants.LEFT), f);
+        f.add(lastName);
+        f.add(new JLabel("Address:", SwingConstants.LEFT), f);
+        f.add(address);
+        f.add(new JLabel("Phone:", SwingConstants.LEFT), f);
+        f.add(phone);
+        f.add(new JLabel("Income:", SwingConstants.LEFT), f);
+        f.add(income);
+        f.add(new JLabel("Use:", SwingConstants.LEFT), f);
+        f.add(comboBox1);
+        f.add(new JLabel("Status:", SwingConstants.LEFT), f);
+        f.add(comboBox2);
+        f.add(new JLabel("Model:", SwingConstants.LEFT), f);
+        f.add(model);
+        f.add(new JLabel("Year:", SwingConstants.LEFT), f);
+        f.add(year);
+        f.add(new JLabel("Type:", SwingConstants.LEFT), f);
+        f.add(comboBox3);
+        f.add(new JLabel("Method:", SwingConstants.LEFT), f);
+        f.add(comboBox4);
+        f.add(submitButton);
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        f.pack();
+        f.setVisible(true); //show the actual frame
+        f.setSize(200,400);
+    }
     public List<String> buildProf() {
         //Gets all the User Inputs from the boxes
         String id = admin.getText();
@@ -134,4 +135,3 @@ public class CreateProfile {
     }
 
 }
-
