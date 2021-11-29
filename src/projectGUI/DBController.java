@@ -146,17 +146,18 @@ public class DBController {
     }
     public static boolean searchProfile(String lastname, String adminID, Path path){
         List<String> allProfiles = new ArrayList<>();
-        boolean select = false;
+        boolean select = false; //select is set to false until proven true
         try {
             allProfiles = Files.readAllLines(path);
         } catch (IOException e){
             e.printStackTrace();
         }
-        for (int i = 2; i<allProfiles.size(); i++){
+        for (int i = 2; i < allProfiles.size(); i++){
             if(adminID.equals(allProfiles.get(i-2)) && lastname.equals(allProfiles.get(i))){
-                select = true;
+                select = true; //select is now true since the profile is in the database
             }
         }
-        return select;
+        return select; //then the boolean value
     }
 }
+
