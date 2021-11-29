@@ -35,7 +35,7 @@ public class MultLogin {
     }
 
     public void openGUI(){
-        JFrame f = new JFrame("Integrated Patient System");    //creates instance of a frame
+        JFrame f = new JFrame("Integrated Customer System");    //creates instance of a frame
         f.setContentPane(new MultLogin().multLog);
         f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
         f.add(adminID);
@@ -46,4 +46,3 @@ public class MultLogin {
         f.setSize(200,400);
     }
 }
-
