@@ -68,7 +68,7 @@ public class CreateProfile {
             }
         });
     }
-    public void openGUI () {
+    public void openGUI () {  //will be used for opening up a gui window for this class
         JFrame f = new JFrame("Integrated Customer System"); //creates an instance
         f.setContentPane(new CreateProfile().createPanel);
         f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
