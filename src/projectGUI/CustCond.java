@@ -1,6 +1,9 @@
 package projectGUI;
 import java.io.Serializable;
 
+//this code is similar to that from vehicleInfo
+//this class returns some of the vehicle information pertaining to a certain customer
+
 public class CustCond implements Serializable{
     String Usecar;
     String statuscar;
