@@ -58,7 +58,7 @@ public class IntCustSysMenu {
         f.add(updateProfileRadioButton);
         f.add(findDisplayProfileRadioButton);
         f.add(displayAllProfilesRadioButton);
-        f.add(new JButton("Submit"));
+        f.add(selectButton);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
         f.setVisible(true);
