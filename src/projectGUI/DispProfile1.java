@@ -45,6 +45,6 @@ public class DispProfile1 {
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
         f.setVisible(true);
-        f.setSize(200,400);
+        f.setSize(150,400);
     }
 }
