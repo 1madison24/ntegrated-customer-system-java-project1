@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 public class IntCustSysMenu {
-    private JButton selectButton = new JButton();
+    private JButton selectButton = new JButton("select button");
     private JPanel menuPanel = new JPanel();
     private JRadioButton createProfileRadioButton = new JRadioButton("Create Profile");
     private JRadioButton deleteProfileRadioButton = new JRadioButton("Delete Profile");
@@ -22,28 +22,28 @@ public class IntCustSysMenu {
 
         selectButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+//                JOptionPane.showMessageDialog(null, "Success!");
                 if (createProfileRadioButton.isSelected()) {
                     CreateProfile v = new CreateProfile();
                     v.openGUI();
                 }
-                if (deleteProfileRadioButton.isSelected()) {
-                    DeleteProfile prof = new DeleteProfile();
-                    prof.openGUI();
+                else if (deleteProfileRadioButton.isSelected()) {
+                    DeleteProfile y = new DeleteProfile();
+                    y.openGUI();
                 }
 
-                if (updateProfileRadioButton.isSelected()) {
-                    UpdateProfile prof = new UpdateProfile();
-                    prof.openGUI();
+                else if (updateProfileRadioButton.isSelected()) {
+                    UpdateProfile z = new UpdateProfile();
+                    z.openGUI();
                 }
 
-                if (findDisplayProfileRadioButton.isSelected()) {
-                    DispProfile1 prof = new DispProfile1();
-                    prof.openGUI();
+                else if (findDisplayProfileRadioButton.isSelected()) {
+                    DispProfile1 j = new DispProfile1();
+                    j.openGUI();
                 }
-                if (displayAllProfilesRadioButton.isSelected()) {
-                    MultLogin prof = new MultLogin();
-                    prof.openGUI();
+                else if (displayAllProfilesRadioButton.isSelected()) {
+                    MultLogin k = new MultLogin();
+                    k.openGUI();
                 }
             }
         });
@@ -65,10 +65,10 @@ public class IntCustSysMenu {
         f.setSize(200, 400);
     }
 
-        public static void main(String[] args) {
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter Path:\n");
-            String strpath = in.nextLine();
-            Path path = Paths.get(strpath);
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Path:\n");
+        String strpath = in.nextLine();
+        Path path = Paths.get(strpath);
     }
 }
