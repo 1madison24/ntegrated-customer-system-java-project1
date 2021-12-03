@@ -9,18 +9,19 @@ import java.util.Scanner;
 
 
 public class IntCustSysMenu {
-    private JButton selectButton = new JButton();
+    private JButton RadioButton = new JButton();
     private JPanel menuPanel = new JPanel();
     private JRadioButton createProfileRadioButton = new JRadioButton("Create Profile");
     private JRadioButton deleteProfileRadioButton = new JRadioButton("Delete Profile");
     private JRadioButton updateProfileRadioButton = new JRadioButton("Update Profile");
     private JRadioButton findDisplayProfileRadioButton = new JRadioButton("Find Profile");
     private JRadioButton displayAllProfilesRadioButton = new JRadioButton("Display All Profiles");
+    private ButtonGroup buttons = new ButtonGroup();
 
 
     public IntCustSysMenu() {
 
-        selectButton.addActionListener(new ActionListener() {
+        RadioButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 if (createProfileRadioButton.isSelected()) {
@@ -51,6 +52,13 @@ public class IntCustSysMenu {
     //public static void main(String[] args) {}
 
     public void openGUI() {
+
+        buttons.add(createProfileRadioButton);
+        buttons.add(deleteProfileRadioButton);
+        buttons.add(updateProfileRadioButton);
+        buttons.add(findDisplayProfileRadioButton);
+        buttons.add(displayAllProfilesRadioButton);
+
         JFrame f = new JFrame("Integrated Customer System");
         f.setContentPane(new IntCustSysMenu().menuPanel);
         f.add(createProfileRadioButton);
