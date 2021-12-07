@@ -25,27 +25,37 @@ public class IntCustSysMenu {
         selectButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
+                int check = 0;
+
                 if (createProfileRadioButton.isSelected()) {
                     CreateProfile v = new CreateProfile();
+                    check = 1;
                     v.openGUI();
                 }
                 if (deleteProfileRadioButton.isSelected()) {
                     DeleteProfile prof = new DeleteProfile();
+                    check = 1;
                     prof.openGUI();
                 }
 
                 if (updateProfileRadioButton.isSelected()) {
                     UpdateProfile prof = new UpdateProfile();
+                    check = 1;
                     prof.openGUI();
                 }
 
                 if (findDisplayProfileRadioButton.isSelected()) {
                     DispProfile1 prof = new DispProfile1();
+                    check = 1;
                     prof.openGUI();
                 }
                 if (displayAllProfilesRadioButton.isSelected()) {
                     MultLogin prof = new MultLogin();
+                    check = 1;
                     prof.openGUI();
+                }
+                if (check == 0){
+                    JOptionPane.showMessageDialog(null, "Please Choose a Valid Option");
                 }
             }
         });

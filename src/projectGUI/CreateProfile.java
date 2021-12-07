@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.lang.String;
 
 
 public class CreateProfile {
@@ -121,8 +122,28 @@ public class CreateProfile {
         profile.add(first);
         profile.add(last);
         profile.add(address1);
-        profile.add(phone1);
-        profile.add(income1);
+        try {
+            Integer.parseInt(phone.getText());
+            profile.add(phone1);
+        }
+        catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
+        }
+        try {
+            if(phone1.length() == 10){
+                profile.add(phone1);
+            }
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
+        }
+        try {
+            Integer.parseInt(income.getText());
+            profile.add(income1);
+        }
+        catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Please Enter a Valid Income");
+        }
         profile.add(use);
         profile.add(status);
         profile.add(model1);
