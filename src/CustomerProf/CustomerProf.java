@@ -61,7 +61,16 @@ public class CustomerProf {
     }
     //replace the old information stored in phone with the new phonenumber
     public void Updatephone(String Newphone){
-        phone = Newphone;
+        if(Newphone.length() == 10) {
+            try {
+                phone = Newphone;
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException(("Phone number can only contain integers."));
+            }
+        }
+        else {
+            throw new IllegalArgumentException("invalid format. Enter a valid format e.x. 9998887777");
+        }
     }
     public float getincome() {
         return income;
