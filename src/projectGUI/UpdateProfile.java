@@ -65,4 +65,5 @@ public class UpdateProfile {
         f.setVisible(true);
         f.setSize(200,400);
     }
+
 }
