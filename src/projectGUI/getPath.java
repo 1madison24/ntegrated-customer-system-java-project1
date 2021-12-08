@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class getPath {
-    public static Path thePath = Paths.get("src/Database.txt");
+    public static Path thePath = Paths.get("src/dbTestingText.txt");
     public static Path getIt(){
         return thePath;
     }
