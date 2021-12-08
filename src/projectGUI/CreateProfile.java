@@ -14,20 +14,20 @@ import java.lang.String;
 
 
 public class CreateProfile {
-    private JPanel createPanel = new JPanel();
-    private JTextField admin = new JTextField(10);
-    private JTextField firstName = new JTextField(10);
-    private JTextField lastName = new JTextField(10);
-    private JTextField address = new JTextField(10);
-    private JTextField phone = new JTextField(10);
-    private JTextField income = new JTextField(10);
-    private JComboBox comboBox1 = new JComboBox(); // Use
-    private JComboBox comboBox2 = new JComboBox();// Status
-    private JTextField model = new JTextField(10);
-    private JTextField year = new JTextField(10);
-    private JComboBox comboBox3 = new JComboBox();; //Type
-    private JComboBox comboBox4 = new JComboBox();; //Method
-    private JButton submitButton = new JButton("Submit");
+    private final JPanel createPanel = new JPanel();
+    private final JTextField admin = new JTextField(10);
+    private final JTextField firstName = new JTextField(10);
+    private final JTextField lastName = new JTextField(10);
+    private final JTextField address = new JTextField(10);
+    private final JTextField phone = new JTextField(10);
+    private final JTextField income = new JTextField(10);
+    private final JComboBox comboBox1 = new JComboBox(); // Use
+    private final JComboBox comboBox2 = new JComboBox();// Status
+    private final JTextField model = new JTextField(10);
+    private final JTextField year = new JTextField(10);
+    private final JComboBox comboBox3 = new JComboBox(); //Type
+    private final JComboBox comboBox4 = new JComboBox(); //Method
+    private final JButton submitButton = new JButton("Submit");
 
     public CreateProfile() {
 //        CustomerProf cp = new CustomerProf();
@@ -62,45 +62,45 @@ public class CreateProfile {
                 List userProf = buildProf();
                 DBController prof = new DBController();
                 getPath pathname = new getPath();
-                Path path = pathname.getIt();
-                prof.addProfile(userProf, path);
+                Path path = getPath.getIt();
+                DBController.addProfile(userProf, path);
                 JOptionPane.showMessageDialog(null, "Success!");
             }
         });
     }
-    public void openGUI () {
-        JFrame f = new JFrame("Integrated Customer System"); //creates an instance
-        f.setContentPane(new CreateProfile().createPanel);
-        f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
-        f.add(admin);
-        f.add(new JLabel("First Name:", SwingConstants.LEFT), f);
-        f.add(firstName);
-        f.add(new JLabel("Last Name:", SwingConstants.LEFT), f);
-        f.add(lastName);
-        f.add(new JLabel("Address:", SwingConstants.LEFT), f);
-        f.add(address);
-        f.add(new JLabel("Phone:", SwingConstants.LEFT), f);
-        f.add(phone);
-        f.add(new JLabel("Income:", SwingConstants.LEFT), f);
-        f.add(income);
-        f.add(new JLabel("Use:", SwingConstants.LEFT), f);
-        f.add(comboBox1);
-        f.add(new JLabel("Status:", SwingConstants.LEFT), f);
-        f.add(comboBox2);
-        f.add(new JLabel("Model:", SwingConstants.LEFT), f);
-        f.add(model);
-        f.add(new JLabel("Year:", SwingConstants.LEFT), f);
-        f.add(year);
-        f.add(new JLabel("Type:", SwingConstants.LEFT), f);
-        f.add(comboBox3);
-        f.add(new JLabel("Method:", SwingConstants.LEFT), f);
-        f.add(comboBox4);
-        f.add(submitButton);
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.pack();
-        f.setVisible(true); //show the actual frame
-        f.setSize(163,650);
-    }
+        public void openGUI () {
+            JFrame f = new JFrame("Integrated Customer System"); //creates an instance
+            f.setContentPane(new CreateProfile().createPanel);
+            f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
+            f.add(admin);
+            f.add(new JLabel("First Name:", SwingConstants.LEFT), f);
+            f.add(firstName);
+            f.add(new JLabel("Last Name:", SwingConstants.LEFT), f);
+            f.add(lastName);
+            f.add(new JLabel("Address:", SwingConstants.LEFT), f);
+            f.add(address);
+            f.add(new JLabel("Phone:", SwingConstants.LEFT), f);
+            f.add(phone);
+            f.add(new JLabel("Income:", SwingConstants.LEFT), f);
+            f.add(income);
+            f.add(new JLabel("Use:", SwingConstants.LEFT), f);
+            f.add(comboBox1);
+            f.add(new JLabel("Status:", SwingConstants.LEFT), f);
+            f.add(comboBox2);
+            f.add(new JLabel("Model:", SwingConstants.LEFT), f);
+            f.add(model);
+            f.add(new JLabel("Year:", SwingConstants.LEFT), f);
+            f.add(year);
+            f.add(new JLabel("Type:", SwingConstants.LEFT), f);
+            f.add(comboBox3);
+            f.add(new JLabel("Method:", SwingConstants.LEFT), f);
+            f.add(comboBox4);
+            f.add(submitButton);
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            f.pack();
+            f.setVisible(true); //show the actual frame
+            f.setSize(163,650);
+        }
     public List<String> buildProf() {
         //Gets all the User Inputs from the boxes
         String id = admin.getText();
@@ -123,22 +123,27 @@ public class CreateProfile {
         profile.add(last);
         profile.add(address1);
         try {
-            Integer.parseInt(phone.getText());
-            profile.add(phone1);
-        }
-        catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
-        }
-        if(phone1.length() == 10) {
-            try{
+            try {
+                if (phone1.length() == 10) {
+                    profile.add(phone1);
+                }
+            }
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
+            }
+                Integer.parseInt(phone.getText());
                 profile.add(phone1);
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Invalid Phone Number Format. Enter valid format e.x. 9998887777");
-        }
+//        try {
+//            if(phone1.length() == 10){
+//                profile.add(phone1);
+//            }
+//        }
+//        catch(NumberFormatException e){
+//            JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
+//        }
         try {
             Integer.parseInt(income.getText());
             profile.add(income1);
@@ -155,5 +160,6 @@ public class CreateProfile {
 
         return profile;
     }
+
 }
 
