@@ -1,5 +1,9 @@
 package CustomerProf;
 import VehicleInfo.VehicleInfo;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Locale;
 //test
 
 /* Keeps track of different characteristics of a customer’s profile, i.e., name, address,
@@ -16,6 +20,9 @@ public class CustomerProf {
     private String status;
     private String use;
     VehicleInfo VehicleInfo; //an attribute
+    //to use later as boolean
+    private HashSet<String> validStatus = new HashSet<>(Arrays.asList("active", "inactive"));
+    private HashSet<String> validUse = new HashSet<>(Arrays.asList("business", "personal", "both"));
 
 
     public CustomerProf(String person_adminID, String person_firstName, String person_lastName, String person_address,
@@ -84,15 +91,26 @@ public class CustomerProf {
     }
     //replace the old info stored in status with the customer's new status
     public void Updatestatus(String Newstatus){
-        status = Newstatus;
+        if (validStatus.contains(Newstatus.toLowerCase(Locale.ROOT))){
+            status = Newstatus;
+        }
+        else {
+            throw new IllegalArgumentException("Status needs to be either: active or inactive");
+        }
     }
     public String getuse() {
         return use;
     }
     //replace the old info stored in use with the customer's new use
     public void UpdateUse(String newUse) {
-        use = newUse;
-    }
+        if(validUse.contains(newUse.toLowerCase(Locale.ROOT))) {
+            use = newUse;
+        }
+        else {
+            throw new IllegalArgumentException("Use needs to be either: business, personal, or both");
+            }
+        }
+
     public VehicleInfo getvehicleInfo() {
         return VehicleInfo;
     }
