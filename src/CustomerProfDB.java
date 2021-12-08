@@ -61,19 +61,28 @@ public class CustomerProfDB {
         throw new IllegalArgumentException("Unable to find customer"); //if the adminID or last name does not match any customer profile
     }
 
-    public CustomerProf findFirstProfile() {
-        if (numCustomer <= 0) { //if there are no profiles in the database, then there will be no first profile
-            return null;
-        } else {
-            CustomerProf customer = customerList.get(0); //1st customer in the list is at index 0
-            return customer;
+    public CustomerProf findFirstProfile(String adminID) {
+        for(CustomerProf customer: customerList) {
+            if (customer.getadminID().equals(adminID)) { //if the user inputted admin ID matches that of a customer profile's addminID
+                currentCustomerIndex = customerList.indexOf(customer); //set the index to the index of the customer and return that profile
+                return customer;
+            }
         }
+        throw new IllegalArgumentException("Cannot find customer");
     }
 
     //for when someone wants to find the next profile in the customerList
-    public CustomerProf findNextProfile() {
+    public CustomerProf findNextProfile(String adminID) {
         currentCustomerIndex++;
-        return customerList.get(currentCustomerIndex);
+        for(int i = currentCustomerIndex; i < customerList.size(); i++) {
+            if(customerList.get(i).getadminID().equals(adminID)) {
+                currentCustomerIndex = i;
+                return customerList.get(currentCustomerIndex);
+            }
+
+        }
+        throw new IllegalArgumentException("Cannot find customer");
+
     }
 
     public void writeAllCustomerProf(String fileName) throws IOException {
