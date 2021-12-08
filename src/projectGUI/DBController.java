@@ -167,4 +167,3 @@ public class DBController {
         return select; //then the boolean value
     }
 }
-
