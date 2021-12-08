@@ -60,22 +60,20 @@ public class UpdateProfile2 {
             index = 4;
         } else if (update == "Income") {
             index = 5;
-        } else if (update == "Insurance") {
-            index = 6;
         } else if (update == "Use") {
-            index = 7;
+            index = 6;
         } else if (update == "Status") {
-            index = 8;
+            index = 7;
         } else if (update == "Model") {
-            index = 9;
+            index = 8;
         } else if (update == "Year") {
-            index = 10;
+            index = 9;
         } else if (update == "Type") {
-            index = 11;
+            index = 10;
         } else if (update == "Method") {
-            index = 12;
+            index = 11;
         } else {
-            index = 13;
+            index = 12;
         }
         return index;
     }
