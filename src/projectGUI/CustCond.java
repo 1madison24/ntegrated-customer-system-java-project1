@@ -10,13 +10,13 @@ public class CustCond implements Serializable{
     String typecar;
     String methodcar;
 
-    public CustCond(String patUsecar, String patstatuscar,
-                    String pattypecar, String patmethodcar) {
+    public CustCond(String cusUsecar, String cusstatuscar,
+                    String custypecar, String cusmethodcar) {
 
-        Usecar = patUsecar;
-        statuscar = patstatuscar;
-        typecar = pattypecar;
-        methodcar = patmethodcar;
+        Usecar = cusUsecar;
+        statuscar = cusstatuscar;
+        typecar = custypecar;
+        methodcar = cusmethodcar;
     }
 
     public String getUsecar(){
