@@ -46,11 +46,11 @@ public class VehicleInfo {
                 year = NewYear;
             }
             else {
-                throw new IllegalArgumentException(("Year is invalid: Correct format should have 4 digits: e.x 2022"));
+                throw new IllegalArgumentException(("Year is invalid: Correct format should have 4 digits: e.x 2022")); //that way the user knows how to format their input
             }
         }
         catch (NumberFormatException e) {
-            throw new IllegalArgumentException(("Year is invalid: Correct format should have 4 digits: e.x 2022"));
+            throw new IllegalArgumentException(("Year is invalid: Correct format should have 4 digits: e.x 2022")); //that way user knows how to format their input
         }
     }
 
@@ -59,7 +59,7 @@ public class VehicleInfo {
             type = NewType.toLowerCase(Locale.ROOT);
         }
         else {
-            throw new IllegalArgumentException("Type needs to be one of the following: sedan, hatchback, luxury, sport, other");
+            throw new IllegalArgumentException("Type needs to be one of the following: sedan, hatchback, luxury, sport, other"); //that way user can know what to type in
         }
     }
 
