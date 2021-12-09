@@ -5,8 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 
 public class DBController {
@@ -15,25 +13,12 @@ public class DBController {
         IntCustSysMenu i = new IntCustSysMenu();
         i.openGUI(); //opens up the integrated customer system menu window
 
-
-        //CreateProfile v = new CreateProfile();
-        //v.openGUI();
-        //DeleteProfile y = new DeleteProfile();
-        //y.openGUI();
-        //UpdateProfile z = new UpdateProfile();
-        //z.openGUI();
-        //DispProfile1 j = new DispProfile1();
-        //j.openGUI();
-        //MultLogin k = new MultLogin();
-        //k.openGUI();
-
     }
     public static void addProfile(List<String> userInfo, Path path){
-        List<String> temp = userInfo; //need a temporary variable so that the userInfo doesn't actually change when we use it in our try
         for (int i = 0; i < 12; i++){
             try{
-                temp.set(i, userInfo.get(i) + "\n");
-                Files.write(path, temp.get(i).getBytes(), StandardOpenOption.APPEND);
+                userInfo.set(i, userInfo.get(i) + "\n");
+                Files.write(path, userInfo.get(i).getBytes(), StandardOpenOption.APPEND);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -68,7 +53,7 @@ public class DBController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int begin = 0;
+        int begin;
         for (int i= 2; i<allProfiles.size(); i++){
             if(adminID.equals(allProfiles.get(i-2)) && lastname.equals(allProfiles.get(i))){
                 begin = i - 2;
@@ -88,12 +73,12 @@ public class DBController {
         } catch (IOException e){
             e.printStackTrace();
         }
-        int begin = 0;
+        int begin;
         for (int i = 2; i < allProfiles.size(); i++){
             if(adminID.equals(allProfiles.get(i-2)) && lastname.equals(allProfiles.get(i))){
                 begin = i -2;
-                for(int j = begin; j<(begin+12); j++){
-                    allProfiles.remove(begin);
+                if ((begin + 12) > begin) {
+                    allProfiles.subList(begin, (begin + 12)).clear();
                 }
                 break;
             }
@@ -127,7 +112,7 @@ public class DBController {
         } catch (IOException e){
             e.printStackTrace();
         }
-        int begin = 0;
+        int begin;
         for (int i = 2; i < allProfiles.size(); i++){
             if(adminID.equals(allProfiles.get(i-2))&& lastname.equals(allProfiles.get(i))){
                 begin = i-2;
@@ -160,8 +145,9 @@ public class DBController {
             e.printStackTrace();
         }
         for (int i = 2; i < allProfiles.size(); i++){
-            if(adminID.equals(allProfiles.get(i-2)) && lastname.equals(allProfiles.get(i))){
+            if (adminID.equals(allProfiles.get(i - 2)) && lastname.equals(allProfiles.get(i))) {
                 select = true; //select is now true since the profile is in the database
+                break;
             }
         }
         return select; //then the boolean value
