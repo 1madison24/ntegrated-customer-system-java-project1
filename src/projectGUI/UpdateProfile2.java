@@ -14,16 +14,15 @@ public class UpdateProfile2 {
     UpdateProfile update2;   //update UpdateProfile.java
     CustomerProf.CustomerProf cusProf; //customer profile to update
 
-
     //private JPanel update2;
-    private JLabel adminID;
-    private JLabel lastName;
-
-
+//    private JLabel adminID;
+    private final JTextField adminID = new JTextField(10);
+    private final JTextField lastName = new JTextField(10);
+//    private JLabel lastName;
 
 
     public UpdateProfile2(String ID, String last, String choice) {
-
+        System.out.println(ID);
         writeLabels(ID, last, choice);
 
         submitButton.addActionListener(new ActionListener() {
@@ -35,7 +34,7 @@ public class UpdateProfile2 {
                 DBController prof = new DBController();
                 getPath path = new getPath();
                 Path pathname = path.getIt();
-
+                System.out.println(pathname);
                 prof.updateProfileByLastName(last, info, ind, ID, pathname);
 
                 JOptionPane.showMessageDialog(null, "Success!");
@@ -53,6 +52,9 @@ public class UpdateProfile2 {
     public void writeLabels(String ID, String last, String choice){
         adminID.setText("Admin ID: " + ID);
         lastName.setText("Customer's Last Name: " + last);
+        int index = getIndex(choice);
+        System.out.println(index);
+        System.out.println(last);
         updateChoice.setText(choice + ": ");
     }
 
@@ -87,6 +89,13 @@ public class UpdateProfile2 {
         }
         return index;
     }
+
+    //we have the index when they choose from the drop down menu
+    //so have that textbox ready for the user to input
+    // given what the user puts in the UserFieldUpdate
+    // update accordingly
+
+
 }
 
 

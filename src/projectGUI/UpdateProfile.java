@@ -14,6 +14,7 @@ public class UpdateProfile extends Container {
     private final JTextField admin = new JTextField(10);
     private final JTextField last = new JTextField(10);
     private final JComboBox<String> updateField = new JComboBox<>();
+    private final JTextField inputField = new JTextField(10);
     private final JButton findButton = new JButton("Submit");
 
     public UpdateProfile() {
@@ -43,10 +44,12 @@ public class UpdateProfile extends Container {
                 Path pathname = path.getIt();
 
                 boolean status = prof.searchProfile(lastName, adminID, pathname);
+                System.out.println(status);
                 if (status) {
-
+                    System.out.println(adminID);
                     UpdateProfile2 pan = new UpdateProfile2(adminID, lastName, update);
                     pan.openGUI(adminID, lastName, update);
+                    //setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Profile Not Found");
                 }
@@ -63,6 +66,7 @@ public class UpdateProfile extends Container {
         f.add(new JLabel("Last Name:", SwingConstants.RIGHT), f);
         f.add(last);
         f.add(updateField);
+        f.add(inputField);
         f.add(findButton);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
