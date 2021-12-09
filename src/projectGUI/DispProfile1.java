@@ -19,10 +19,10 @@ public class DispProfile1 {
             String id = adminID.getText();
             DBController funcCall = new DBController();
             getPath pathname = new getPath();
-            Path path = getPath.getIt();
+            Path path = pathname.getIt();
             boolean status = DBController.searchProfile(last, id, path);
             if(status) {
-                DBController.getProfileByLastName(last,id,path);
+                funcCall.getProfileByLastName(last,id,path);
 
                 List<String> theProf = DBController.getProfileByLastName(last, id, path);
                 JFrame DispForm = new JFrame();

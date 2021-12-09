@@ -1,9 +1,9 @@
 PA1
 Vlaho
 Munira
-32 Brown Blvd
 8002341623
-40000
+32 Brown Blvd
+40000.0
 Active
 Personal
 Toyota
@@ -13,9 +13,9 @@ Used
 PA2
 Velibor
 Marloes
-76 Little Street
 8002338912
-60000
+76 Little Street
+60000.0
 Inactive
 Business
 Nissan
@@ -25,9 +25,9 @@ Certified Pre-owned
 PA2
 Zeus
 Payam
-10 Needmore Street
 8023341623
-100000
+10 Needmore Street
+100000.0
 Active
 Both
 Lexus
@@ -37,9 +37,9 @@ Other
 PA1
 Floro
 Mirinda
-6517 Nearest Street
 8126125423
-80000
+6517 Nearest Street
+80000.0
 Inactive
 Business
 Honda
@@ -49,9 +49,9 @@ Used
 PA2
 Roosevelt
 Intan
-1001 Brown Ave
 8126742233
-60000
+1001 Brown Ave
+60000.0
 Inactive
 Both
 Ford
@@ -61,77 +61,108 @@ Other
 PA1
 Safa
 Javi
-6007 Research Ave
 8259841623
-400000
+6007 Research Ave
+400000.0
 Active
 Personal
 Ferrari
 2020
 Sport
-Newast17010
-Ashely
-Tang
-123 Dumpling St
-111
-Business
-Active
-111
-1
-Sudan
 New
-ast17010
-Ashely
-Tang
-123 Dumpling St
-1111111111
-111
-Business
+PA5
+Husky
+Uconn
+5555555555
+Storrs
+2000.0
 Active
-111
-1
-Sudan
-New
-
-
-
-
 Business
+Nissan
+2020
+j
+n
+PA1
+Vlaho
+Munira
+8002341623
+32 Brown Blvd
+40000.0
 Active
-2
-
-Sudan
-New
-
-
-
-
+Personal
+Toyota
+2013
+Sedan
+Used
+PA2
+Velibor
+Marloes
+8002338912
+76 Little Street
+60000.0
+Inactive
 Business
+Nissan
+2013
+Sport
+Certified Pre-owned
+PA2
+Zeus
+Payam
+8023341623
+10 Needmore Street
+100000.0
 Active
-222222
-
-Sudan
-New
-100
-a
-d
-11
-123123
+Both
+Lexus
+2019
+Other
+Other
+PA1
+Floro
+Mirinda
+8126125423
+6517 Nearest Street
+80000.0
+Inactive
 Business
+Honda
+2017
+Hatchback
+Used
+PA2
+Roosevelt
+Intan
+8126742233
+1001 Brown Ave
+60000.0
+Inactive
+Both
+Ford
+2018
+Sedan
+Other
+PA1
+Safa
+Javi
+8259841623
+6007 Research Ave
+400000.0
 Active
-1231
-1231
-Sudan
+Personal
+Ferrari
+2020
+Sport
 New
-100
-a
-d
-11
-1111111111
-123123
+PA5
+aaa
+Uconn
+5555555555
+Storrs
+2000.0
+Active
 Business
-Active
-1231
-1231
-Sudan
-New
+Nissan
+2020
+j
+n

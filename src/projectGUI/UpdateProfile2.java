@@ -1,4 +1,4 @@
-package projectGUI;
+/*package projectGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -7,10 +7,10 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class UpdateProfile2 {
-    JButton submitButton;
-    JLabel updateChoice; //update field
+    JButton submitButton = new JButton("Submit");
+    JTextField updateChoice = new JTextField(10);; //update field
 
-    JTextField updateInfo;    //update textfield
+    JTextField updateInfo = new JTextField(10);;    //update textfield
     JComboBox<String> UpdateDropDown; // update drop down
     UpdateProfile update2;   //update UpdateProfile.java
     CustomerProf.CustomerProf cusProf; //customer profile to update
@@ -26,6 +26,7 @@ public class UpdateProfile2 {
         System.out.println(ID);
         writeLabels(ID, last, choice);
 
+
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,10 +34,11 @@ public class UpdateProfile2 {
                 String info = updateInfo.getText();
 
                 DBController prof = new DBController();
-                getPath path = new getPath();
-                Path pathname = path.getIt();
-                System.out.println(pathname);
-                prof.updateProfileByLastName(last, info, ind, ID, pathname);
+                getPath pathname = new getPath();
+                Path path = getPath.getIt();
+                System.out.println(path);
+                //DBController.updateProfileByLastName(String lastName, String updateInfo, ind, String adminID, Path path);
+                DBController.updateProfileByLastName(last, info, ind, ID, path);
 
                 JOptionPane.showMessageDialog(null, "Success!");
             }
@@ -96,13 +98,14 @@ public class UpdateProfile2 {
     //so have that textbox ready for the user to input
     // given what the user puts in the UserFieldUpdate
     // update accordingly
-    public UpdateCorrespondingProfile() {
+   /* public void UpdateCorrespondingProfile() {
         submitButton.addActionListener(e -> {
             String last = lastName.getText();
             String id = adminID.getText();
             DBController funcCall = new DBController();
             getPath pathname = new getPath();
             Path path = getPath.getIt();
+
             boolean status = DBController.searchProfile(last, id, path);
             if (status) {
                 DBController.getProfileByLastName(last, id, path);
@@ -111,7 +114,7 @@ public class UpdateProfile2 {
                 //maybe here we getText() from what the user inputted into the inputField
 
 
-                DBController.updateProfileByLastName(String lastName, String updatedInfo, indexOfUpdate, String adminID, Path path);
+                //DBController.updateProfileByLastName(String lastName, String updatedInfo, indexOfUpdate, String adminID, Path path);
             } else {
                 JOptionPane.showMessageDialog(null, "Profile Not Found");
             }
@@ -127,8 +130,11 @@ public class UpdateProfile2 {
 
 
         });
+
+
     }
-}
+    */
+
 
 
 

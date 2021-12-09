@@ -37,7 +37,7 @@ public class IntCustSysMenu {
             }
 
             if (updateProfileRadioButton.isSelected()) {
-                UpdateProfile prof = new UpdateProfile();
+                UpdateProfileAttempt prof = new UpdateProfileAttempt();
                 check = 1;
                 prof.openGUI();
             }

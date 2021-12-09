@@ -119,14 +119,16 @@ public class DBController {
                 delDetail = begin+indexOfUpdate;
             }
         }
+        System.out.println(allProfiles);
+        System.out.println(delDetail);
         allProfiles.remove(delDetail); //remove the detail you wanted to delete
         allProfiles.add(delDetail, updatedInfo); //in place of where you had deleted the detail, add the new info you wanted to add
 
-        try {
-            Files.delete(path);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
+//        try {
+//            Files.delete(path);
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }
         for (int i = 0; i < allProfiles.size(); i++){
             allProfiles.set(i, allProfiles.get(i) + "\n");
             try {
