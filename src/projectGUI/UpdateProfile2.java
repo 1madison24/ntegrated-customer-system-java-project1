@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
+import java.util.List;
 
 public class UpdateProfile2 {
     JButton submitButton;
@@ -49,7 +50,8 @@ public class UpdateProfile2 {
         f.pack();
         f.setVisible(true);
     }
-    public void writeLabels(String ID, String last, String choice){
+
+    public void writeLabels(String ID, String last, String choice) {
         adminID.setText("Admin ID: " + ID);
         lastName.setText("Customer's Last Name: " + last);
         int index = getIndex(choice);
@@ -94,8 +96,33 @@ public class UpdateProfile2 {
     //so have that textbox ready for the user to input
     // given what the user puts in the UserFieldUpdate
     // update accordingly
+    public UpdateCorrespondingProfile() {
+        submitButton.addActionListener(e -> {
+            String last = lastName.getText();
+            String id = adminID.getText();
+            DBController funcCall = new DBController();
+            getPath pathname = new getPath();
+            Path path = getPath.getIt();
+            boolean status = DBController.searchProfile(last, id, path);
+            if (status) {
+                DBController.getProfileByLastName(last, id, path);
+                List<String> theProf = DBController.getProfileByLastName(last, id, path);
+            } else {
+                JOptionPane.showMessageDialog(null, "Profile Not Found");
+            }
 
 
+            //now write code for updating based on what the selection was by the user in the drop down
+            //AND while using what the user has inputted into the inputField textbook of what info they are using as replacement
+
+
+
+
+
+
+
+        });
+    }
 }
 
 
