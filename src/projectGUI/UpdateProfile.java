@@ -1,16 +1,16 @@
 package projectGUI;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.nio.file.Path;
 
 
 public class UpdateProfile {
-    private JPanel updatePanel = new JPanel();
-    private JTextField admin = new JTextField(10);
-    private JTextField last = new JTextField(10);
-    private JComboBox updateField = new JComboBox();
-    private JButton findButton = new JButton("Submit");
+    private final JPanel updatePanel = new JPanel();
+    private final JTextField admin = new JTextField(10);
+    private final JTextField last = new JTextField(10);
+    private final JComboBox<String> updateField = new JComboBox<>();
+    private final JButton findButton = new JButton("Submit");
 
     public UpdateProfile() {
 
@@ -27,26 +27,23 @@ public class UpdateProfile {
         updateField.addItem("Type");
         updateField.addItem("Method");
 
-        findButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String lastName = last.getText();
-                String adminID = admin.getText();
-                String update = (String) updateField.getSelectedItem();
+        findButton.addActionListener(e -> {
+            String lastName = last.getText();
+            String adminID = admin.getText();
+            String update = (String) updateField.getSelectedItem();
 
-                DBController prof = new DBController();
-                getPath path = new getPath();
-                Path pathname = path.getIt();
+            DBController prof = new DBController();
+            getPath path = new getPath();
+            Path pathname = getPath.getIt();
 
-                boolean status = prof.searchProfile(lastName, adminID, pathname);
-                if (status) {
-                    UpdateProfile2 pan = new UpdateProfile2(adminID, lastName, update);
-                    pan.openGUI(adminID, lastName, update);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Profile Not Found");
-                }
-
+            boolean status = DBController.searchProfile(lastName, adminID, pathname);
+            if (status) {
+                UpdateProfile2 pan = new UpdateProfile2(adminID, lastName, update);
+                pan.openGUI(adminID, lastName, update);
+            } else {
+                JOptionPane.showMessageDialog(null, "Profile Not Found");
             }
+
         });
     }
 
