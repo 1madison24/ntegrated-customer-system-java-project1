@@ -1,16 +1,25 @@
 package projectGUI;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
 
 public class UpdateProfile2 {
-    private JPanel update2;
+    JButton submitButton;
+    JLabel updateChoice; //update field
+
+    JTextField updateInfo;    //update textfield
+    JComboBox<String> UpdateDropDown; // update drop down
+    UpdateProfile update2;   //update UpdateProfile.java
+    CustomerProf.CustomerProf cusProf; //customer profile to update
+
+
+    //private JPanel update2;
     private JLabel adminID;
     private JLabel lastName;
-    private JLabel updateChoice;
-    private JTextField updateInfo;
-    private JButton submitButton;
+
+
 
 
     public UpdateProfile2(String ID, String last, String choice) {
@@ -42,7 +51,7 @@ public class UpdateProfile2 {
     }
     public void writeLabels(String ID, String last, String choice){
         adminID.setText("Admin ID: " + ID);
-        lastName.setText("Patient Last Name: " + last);
+        lastName.setText("Customer's Last Name: " + last);
         updateChoice.setText(choice + ": ");
     }
 
@@ -78,6 +87,8 @@ public class UpdateProfile2 {
         return index;
     }
 }
+
+
 
 
 

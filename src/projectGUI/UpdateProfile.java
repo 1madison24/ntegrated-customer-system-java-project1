@@ -1,11 +1,13 @@
 package projectGUI;
+
 import javax.swing.*;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
+import java.awt.*;
 import java.nio.file.Path;
 
 
-public class UpdateProfile {
+public class UpdateProfile extends Container {
     private final JPanel updatePanel = new JPanel();
     private final JTextField admin = new JTextField(10);
     private final JTextField last = new JTextField(10);
