@@ -1,13 +1,9 @@
 package projectGUI;
-import CustomerProf.CustomerProf;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.lang.String;
@@ -21,12 +17,12 @@ public class CreateProfile {
     private final JTextField address = new JTextField(10);
     private final JTextField phone = new JTextField(10);
     private final JTextField income = new JTextField(10);
-    private final JComboBox comboBox1 = new JComboBox(); // Use
-    private final JComboBox comboBox2 = new JComboBox();// Status
+    private final JComboBox<String> comboBox1 = new JComboBox<>(); // Use
+    private final JComboBox<String> comboBox2 = new JComboBox<>();// Status
     private final JTextField model = new JTextField(10);
     private final JTextField year = new JTextField(10);
-    private final JComboBox comboBox3 = new JComboBox(); //Type
-    private final JComboBox comboBox4 = new JComboBox(); //Method
+    private final JComboBox<String> comboBox3 = new JComboBox<>(); //Type
+    private final JComboBox<String> comboBox4 = new JComboBox<>(); //Method
     private final JButton submitButton = new JButton("Submit");
 
     public CreateProfile() {
@@ -56,16 +52,13 @@ public class CreateProfile {
         comboBox4.addItem("Used");
         comboBox4.addItem("Other");
 
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                List userProf = buildProf();
-                DBController prof = new DBController();
-                getPath pathname = new getPath();
-                Path path = getPath.getIt();
-                DBController.addProfile(userProf, path);
-                JOptionPane.showMessageDialog(null, "Success!");
-            }
+        submitButton.addActionListener(e -> {
+            List<String> userProf = buildProf();
+            DBController prof = new DBController();
+            getPath pathname = new getPath();
+            Path path = getPath.getIt();
+            DBController.addProfile(userProf, path);
+            JOptionPane.showMessageDialog(null, "Success!");
         });
     }
         public void openGUI () {
@@ -136,14 +129,7 @@ public class CreateProfile {
            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
             }
-//        try {
-//            if(phone1.length() == 10){
-//                profile.add(phone1);
-//            }
-//        }
-//        catch(NumberFormatException e){
-//            JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
-//        }
+        
         try {
             Integer.parseInt(income.getText());
             profile.add(income1);
