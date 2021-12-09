@@ -4,6 +4,8 @@ import javax.swing.*;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.nio.file.Path;
 
 
@@ -29,23 +31,26 @@ public class UpdateProfile extends Container {
         updateField.addItem("Type");
         updateField.addItem("Method");
 
-        findButton.addActionListener(e -> {
-            String lastName = last.getText();
-            String adminID = admin.getText();
-            String update = (String) updateField.getSelectedItem();
+        findButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String lastName = last.getText();
+                String adminID = admin.getText();
+                String update = (String) updateField.getSelectedItem();
+                //findButton.setVisible(false);
+                DBController prof = new DBController();
+                getPath path = new getPath();
+                Path pathname = path.getIt();
 
-            DBController prof = new DBController();
-            getPath path = new getPath();
-            Path pathname = getPath.getIt();
+                boolean status = prof.searchProfile(lastName, adminID, pathname);
+                if (status) {
 
-            boolean status = DBController.searchProfile(lastName, adminID, pathname);
-            if (status) {
-                UpdateProfile2 pan = new UpdateProfile2(adminID, lastName, update);
-                pan.openGUI(adminID, lastName, update);
-            } else {
-                JOptionPane.showMessageDialog(null, "Profile Not Found");
+                    UpdateProfile2 pan = new UpdateProfile2(adminID, lastName, update);
+                    pan.openGUI(adminID, lastName, update);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Profile Not Found");
+                }
             }
-
         });
     }
 

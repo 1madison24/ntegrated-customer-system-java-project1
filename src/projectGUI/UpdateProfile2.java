@@ -37,6 +37,7 @@ public class UpdateProfile2 {
                 Path pathname = path.getIt();
 
                 prof.updateProfileByLastName(last, info, ind, ID, pathname);
+
                 JOptionPane.showMessageDialog(null, "Success!");
             }
         });
