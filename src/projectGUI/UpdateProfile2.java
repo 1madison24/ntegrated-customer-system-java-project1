@@ -107,7 +107,11 @@ public class UpdateProfile2 {
             if (status) {
                 DBController.getProfileByLastName(last, id, path);
                 List<String> theProf = DBController.getProfileByLastName(last, id, path);
-                DBController.updateProfileByLastName(String lastName, String updatedInfo, indexOfUpdate, String adminID, Path path)
+
+                //maybe here we getText() from what the user inputted into the inputField
+
+
+                DBController.updateProfileByLastName(String lastName, String updatedInfo, indexOfUpdate, String adminID, Path path);
             } else {
                 JOptionPane.showMessageDialog(null, "Profile Not Found");
             }
