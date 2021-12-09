@@ -1,62 +1,59 @@
 package projectGUI;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
 
 public class IntCustSysMenu {
-    private JButton selectButton = new JButton("Submit");
-    private JPanel menuPanel = new JPanel();
-    private JRadioButton createProfileRadioButton = new JRadioButton("Create Profile");
-    private JRadioButton deleteProfileRadioButton = new JRadioButton("Delete Profile");
-    private JRadioButton updateProfileRadioButton = new JRadioButton("Update Profile");
-    private JRadioButton findDisplayProfileRadioButton = new JRadioButton("Find Profile");
-    private JRadioButton displayAllProfilesRadioButton = new JRadioButton("Display All Profiles");
+    private final JButton selectButton = new JButton("Submit");
+    private final JPanel menuPanel = new JPanel();
+    private final JRadioButton createProfileRadioButton = new JRadioButton("Create Profile");
+    private final JRadioButton deleteProfileRadioButton = new JRadioButton("Delete Profile");
+    private final JRadioButton updateProfileRadioButton = new JRadioButton("Update Profile");
+    private final JRadioButton findDisplayProfileRadioButton = new JRadioButton("Find Profile");
+    private final JRadioButton displayAllProfilesRadioButton = new JRadioButton("Display All Profiles");
     ButtonGroup buttons = new ButtonGroup();
 
 
     public IntCustSysMenu() {
 
-        selectButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        selectButton.addActionListener(e -> {
 
-                int check = 0;
+            int check = 0;
 
-                if (createProfileRadioButton.isSelected()) {
-                    CreateProfile v = new CreateProfile();
-                    check = 1;
-                    v.openGUI();
-                }
-                if (deleteProfileRadioButton.isSelected()) {
-                    DeleteProfile prof = new DeleteProfile();
-                    check = 1;
-                    prof.openGUI();
-                }
+            if (createProfileRadioButton.isSelected()) {
+                CreateProfile v = new CreateProfile();
+                check = 1;
+                v.openGUI();
+            }
+            if (deleteProfileRadioButton.isSelected()) {
+                DeleteProfile prof = new DeleteProfile();
+                check = 1;
+                prof.openGUI();
+            }
 
-                if (updateProfileRadioButton.isSelected()) {
-                    UpdateProfile prof = new UpdateProfile();
-                    check = 1;
-                    prof.openGUI();
-                }
+            if (updateProfileRadioButton.isSelected()) {
+                UpdateProfile prof = new UpdateProfile();
+                check = 1;
+                prof.openGUI();
+            }
 
-                if (findDisplayProfileRadioButton.isSelected()) {
-                    DispProfile1 prof = new DispProfile1();
-                    check = 1;
-                    prof.openGUI();
-                }
-                if (displayAllProfilesRadioButton.isSelected()) {
-                    MultLogin prof = new MultLogin();
-                    check = 1;
-                    prof.openGUI();
-                }
-                if (check == 0){
-                    JOptionPane.showMessageDialog(null, "Please Choose a Valid Option");
-                }
+            if (findDisplayProfileRadioButton.isSelected()) {
+                DispProfile1 prof = new DispProfile1();
+                check = 1;
+                prof.openGUI();
+            }
+            if (displayAllProfilesRadioButton.isSelected()) {
+                MultLogin prof = new MultLogin();
+                check = 1;
+                prof.openGUI();
+            }
+            if (check == 0){
+                JOptionPane.showMessageDialog(null, "Please Choose a Valid Option");
             }
         });
     }
