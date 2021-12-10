@@ -8,6 +8,8 @@ public class DeleteSuccess {
     private JButton OKButton;
 
     public DeleteSuccess(){
+        //Adding the action listener in order to view the input from the DeleteProfile class
+        //Creates a success message througg Jframe when profile is deleted 
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
