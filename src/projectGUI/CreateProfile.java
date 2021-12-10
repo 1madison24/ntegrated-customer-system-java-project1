@@ -126,7 +126,7 @@ public class CreateProfile {
         profile.add(first);
         profile.add(last);
         profile.add(address1);
-
+//Error handling dealing with the phone number 
         if(phone1.length() == 10){
             try {
                 Integer.parseInt(phone.getText());
@@ -135,7 +135,7 @@ public class CreateProfile {
             catch(NumberFormatException e){
                 JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
         }
-            
+          //Error handling dealing with the income   
         }
         try {
             Integer.parseInt(income.getText());
