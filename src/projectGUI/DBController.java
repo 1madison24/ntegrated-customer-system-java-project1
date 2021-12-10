@@ -15,6 +15,7 @@ public class DBController {
 
     }
     public static void addProfile(List<String> userInfo, Path path){
+        //Creates a for loop that runs through the inputs 
         for (int i = 0; i < 12; i++){
             try{
                 userInfo.set(i, userInfo.get(i) + "\n");
@@ -159,6 +160,7 @@ public class DBController {
             }
         }
     }
+    //Opens the gui for find profile
     public static boolean searchProfile(String lastname, String adminID, Path path){
         List<String> allProfiles = new ArrayList<>();
         boolean select = false; //select is set to false until proven true
@@ -175,6 +177,7 @@ public class DBController {
         }
         return select; //then the boolean value
     }
+    //Opens the gui for display all profiles
     public static boolean searchAllProfiles(String adminID, Path path){
         List<String> allProfiles = new ArrayList<>();
         boolean select = false; //select is set to false until proven true
