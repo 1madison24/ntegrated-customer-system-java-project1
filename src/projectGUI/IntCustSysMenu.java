@@ -48,7 +48,7 @@ public class IntCustSysMenu {
                 prof.openGUI();
             }
             if (displayAllProfilesRadioButton.isSelected()) {
-                MultLogin prof = new MultLogin();
+                GUIDisplayAllProfiles prof = new GUIDisplayAllProfiles();
                 check = 1;
                 prof.openGUI();
             }

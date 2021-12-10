@@ -44,6 +44,27 @@ public class DBController {
         return matchProfiles;
     }
 
+ /*   public static List<String> getCorrespondingLastNames(String adminID, Path path){
+        //out of all the profiles, choose the profiles that match the adminID
+        List<String> allProfiles = new ArrayList<>();
+        List<String> matchProfiles = new ArrayList<>();
+        List<String> lastNamesList = new ArrayList<>();
+        try{
+            allProfiles = Files.readAllLines(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //two for loops used for O(n^2) time so we can iterate through the array while keeping track of the first index, and then the next, and so on to find the matching profiles
+        for (int i = 0; i < allProfiles.size(); i++){
+            if(adminID.equals(allProfiles.get(i))){
+                for(int j = 0; j < 12; j++){
+                    matchProfiles.add(allProfiles.get(i+j));
+                }
+            }
+        }
+        return matchProfiles;
+    } */
+
     //will obtain the correct profile based on the last name and adminID
     public static List<String> getProfileByLastName(String lastname, String adminID, Path path){
         List<String> allProfiles = new ArrayList<>();
@@ -148,6 +169,22 @@ public class DBController {
         }
         for (int i = 2; i < allProfiles.size(); i++){
             if (adminID.equals(allProfiles.get(i - 2)) && lastname.equals(allProfiles.get(i))) {
+                select = true; //select is now true since the profile is in the database
+                break;
+            }
+        }
+        return select; //then the boolean value
+    }
+    public static boolean searchAllProfiles(String adminID, Path path){
+        List<String> allProfiles = new ArrayList<>();
+        boolean select = false; //select is set to false until proven true
+        try {
+            allProfiles = Files.readAllLines(path);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        for (int i = 2; i < allProfiles.size(); i++){
+            if (adminID.equals(allProfiles.get(i - 2))) {
                 select = true; //select is now true since the profile is in the database
                 break;
             }
