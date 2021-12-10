@@ -1,31 +1,33 @@
 package projectGUI;
+import CustomerProf.CustomerProf;
 
 import javax.swing.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.lang.String;
 
 
 public class CreateProfile {
-    //Creating the text boxes/option boxes for users to type information
-    private final JPanel createPanel = new JPanel();
-    private final JTextField admin = new JTextField(10);
-    private final JTextField firstName = new JTextField(10);
-    private final JTextField lastName = new JTextField(10);
-    private final JTextField address = new JTextField(10);
-    private final JTextField phone = new JTextField(10);
-    private final JTextField income = new JTextField(10);
-    private final JComboBox<String> comboBox1 = new JComboBox<>(); // Use
-    private final JComboBox<String> comboBox2 = new JComboBox<>();// Status
-    private final JTextField model = new JTextField(10);
-    private final JTextField year = new JTextField(10);
-    private final JComboBox<String> comboBox3 = new JComboBox<>(); //Type
-    private final JComboBox<String> comboBox4 = new JComboBox<>(); //Method
-    //Creating the submit button
-    private final JButton submitButton = new JButton("Submit");
+    private JPanel createPanel = new JPanel();
+    private JTextField admin = new JTextField(10);
+    private JTextField firstName = new JTextField(10);
+    private JTextField lastName = new JTextField(10);
+    private JTextField address = new JTextField(10);
+    private JTextField phone = new JTextField(10);
+    private JTextField income = new JTextField(10);
+    private JComboBox comboBox1 = new JComboBox(); // Use
+    private JComboBox comboBox2 = new JComboBox();// Status
+    private JTextField model = new JTextField(10);
+    private JTextField year = new JTextField(10);
+    private JComboBox comboBox3 = new JComboBox();; //Type
+    private JComboBox comboBox4 = new JComboBox();; //Method
+    private JButton submitButton = new JButton("Submit");
 
     public CreateProfile() {
 //        CustomerProf cp = new CustomerProf();
@@ -53,18 +55,19 @@ public class CreateProfile {
         comboBox4.addItem("Certified Pre-Owned");
         comboBox4.addItem("Used");
         comboBox4.addItem("Other");
-        
-//Adding the submit button action listener in order to send inputs to getpath() (the database.txt file) upon click
-        submitButton.addActionListener(e -> {
-            List<String> userProf = buildProf();
-            DBController prof = new DBController();
-            getPath pathname = new getPath();
-            Path path = getPath.getIt();
-            DBController.addProfile(userProf, path);
-            JOptionPane.showMessageDialog(null, "Success!");
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List userProf = buildProf();
+                DBController prof = new DBController();
+                getPath pathname = new getPath();
+                Path path = pathname.getIt();
+                prof.addProfile(userProf, path);
+                JOptionPane.showMessageDialog(null, "Success!");
+            }
         });
     }
-    //Adding the code to open the actually gui frame
         public void openGUI () {
             JFrame f = new JFrame("Integrated Customer System"); //creates an instance
             f.setContentPane(new CreateProfile().createPanel);
@@ -96,8 +99,6 @@ public class CreateProfile {
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             f.pack();
             f.setVisible(true); //show the actual frame
-            
-            //Changing the sizing of our gui frame
             f.setSize(163,650);
         }
     public List<String> buildProf() {
@@ -115,27 +116,23 @@ public class CreateProfile {
         String type = (String) comboBox3.getSelectedItem();
         String method = (String) comboBox4.getSelectedItem();
 
-        //Puts the new user into a user Profile List (set to the Database.txt path file)
+        //Puts the new user into a user Profile List
         List<String> profile = new ArrayList<>();
         profile.add(id);
         profile.add(first);
         profile.add(last);
         profile.add(address1);
-        try {
-            if (phone1.length() == 10) {
-                try {
-                    Integer.parseInt(phone.getText());
-                    profile.add(phone1);
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
-                }
-//                Integer.parseInt(phone.getText());
-//                profile.add(phone1);
+
+        if(phone1.length() == 10){
+            try {
+                Integer.parseInt(phone.getText());
+                profile.add(phone1);
             }
-           } catch (NumberFormatException e) {
+            catch(NumberFormatException e){
                 JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
-            }
-        
+        }
+            
+        }
         try {
             Integer.parseInt(income.getText());
             profile.add(income1);
