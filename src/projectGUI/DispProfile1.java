@@ -8,12 +8,15 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class DispProfile1 {
+    //Creating  text boxes to recieve user input
     private final JPanel dispProf1 = new JPanel();
     private final JTextField lastName = new JTextField(10);
     private final JTextField adminID = new JTextField(10);
+    //Creating a select button
     private final JButton selectButton = new JButton("Select");
 
     public DispProfile1(){
+        //Creating an action listener in order to get information from the getpath() class (the Database.txt file)
         selectButton.addActionListener(e -> {
             String last = lastName.getText();
             String id = adminID.getText();
@@ -21,6 +24,7 @@ public class DispProfile1 {
             getPath pathname = new getPath();
             Path path = pathname.getIt();
             boolean status = DBController.searchProfile(last, id, path);
+            //If a profile was found with the corresponding last name print out profile information
             if(status) {
                 funcCall.getProfileByLastName(last,id,path);
 
@@ -37,11 +41,12 @@ public class DispProfile1 {
                 DispForm.setVisible(true);
 
             }
+            //If a profile is not found state there is no profile
             else {
                 JOptionPane.showMessageDialog(null, "There is no such Profile");
             }
             });
-    }
+    //Creating the actual gui
     public void openGUI(){
         JFrame f = new JFrame("Integrated Customer System");
         f.setContentPane(new DispProfile1().dispProf1);
@@ -53,6 +58,7 @@ public class DispProfile1 {
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
         f.setVisible(true);
+        //Changing the size of our gui frame 
         f.setSize(150,400);
     }
 }
