@@ -6,11 +6,13 @@ import java.awt.event.ActionListener;
 import java.nio.file.Path;
 
 public class UpdateProfileAttempt {
+    //Creating the Text boxes and Combo boxes for users to input the information 
     private final JPanel updatePanel = new JPanel();
     private final JTextField adminID = new JTextField(10);
     private final JTextField lastname = new JTextField(10);
     private final JComboBox<String> chosenField = new JComboBox<>();
     private final JTextField inputField = new JTextField(10);
+    //Creating a submit button
     private final JButton submit = new JButton("Submit");
 
 
@@ -30,7 +32,7 @@ public class UpdateProfileAttempt {
         chosenField.addItem("Type");
         chosenField.addItem("Method");
 
-
+//Adding an action listener to have the submit button move the information to Database.txt upon click
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,7 +95,7 @@ public class UpdateProfileAttempt {
         }
         return index;
     }
-
+//Creates the final gui 
     public void openGUI(){
         JFrame f = new JFrame("Integrated Customer System");
         f.setContentPane(new UpdateProfileAttempt().updatePanel);
@@ -111,6 +113,7 @@ public class UpdateProfileAttempt {
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
         f.setVisible(true);
+        //Changes the size of the GUI frame
         f.setSize(200, 400);
     }
 }
