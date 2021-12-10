@@ -11,12 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUIDisplayAllProfiles {
+    //Creating text boxes for user to input information
     private final JPanel dispAllProfiles = new JPanel();
     private final JTextField adminID = new JTextField(10);
+    //Creating a select button
     private final JButton selectButton = new JButton("Select");
     private final JTextField lastName = new JTextField(10);
 
     public GUIDisplayAllProfiles(){
+        //Creating an action listener to find the corresponding profile according to last name 
         selectButton.addActionListener(e -> {
             String id = adminID.getText();
             String last = lastName.getText();
@@ -24,7 +27,8 @@ public class GUIDisplayAllProfiles {
             getPath pathname = new getPath();
             Path path = pathname.getIt();
             boolean status = DBController.searchAllProfiles(id, path);
-
+            
+//If a profile is found get the information from Database.txt and send the information from the user
 
             if(status) {
                 funcCall.getAllProfiles(id,path);
@@ -50,12 +54,14 @@ public class GUIDisplayAllProfiles {
                 DispForm.pack();
                 DispForm.setVisible(true);
             }
+            //If no profiles are left send message that there are not profiles left to display
             else {
                 JOptionPane.showMessageDialog(null, "There are no profiles to display");
             }
 
         });
     }
+    //Open actual GUI
     public void openGUI(){
         JFrame f = new JFrame("Integrated Customer System");
         f.setContentPane(new GUIDisplayAllProfiles().dispAllProfiles);
@@ -65,6 +71,7 @@ public class GUIDisplayAllProfiles {
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
         f.setVisible(true);
+        //Change the size of the GUI frame
         f.setSize(150,400);
     }
 }
