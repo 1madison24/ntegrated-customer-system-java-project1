@@ -10,6 +10,7 @@ import java.lang.String;
 
 
 public class CreateProfile {
+    //Creating the text boxes/option boxes for users to type information
     private final JPanel createPanel = new JPanel();
     private final JTextField admin = new JTextField(10);
     private final JTextField firstName = new JTextField(10);
@@ -23,6 +24,7 @@ public class CreateProfile {
     private final JTextField year = new JTextField(10);
     private final JComboBox<String> comboBox3 = new JComboBox<>(); //Type
     private final JComboBox<String> comboBox4 = new JComboBox<>(); //Method
+    //Creating the submit button
     private final JButton submitButton = new JButton("Submit");
 
     public CreateProfile() {
@@ -51,7 +53,8 @@ public class CreateProfile {
         comboBox4.addItem("Certified Pre-Owned");
         comboBox4.addItem("Used");
         comboBox4.addItem("Other");
-
+        
+//Adding the submit button action listener in order to send inputs to getpath() (the database.txt file) upon click
         submitButton.addActionListener(e -> {
             List<String> userProf = buildProf();
             DBController prof = new DBController();
@@ -61,6 +64,7 @@ public class CreateProfile {
             JOptionPane.showMessageDialog(null, "Success!");
         });
     }
+    //Adding the code to open the actually gui frame
         public void openGUI () {
             JFrame f = new JFrame("Integrated Customer System"); //creates an instance
             f.setContentPane(new CreateProfile().createPanel);
@@ -92,6 +96,8 @@ public class CreateProfile {
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             f.pack();
             f.setVisible(true); //show the actual frame
+            
+            //Changing the sizing of our gui frame
             f.setSize(163,650);
         }
     public List<String> buildProf() {
@@ -109,7 +115,7 @@ public class CreateProfile {
         String type = (String) comboBox3.getSelectedItem();
         String method = (String) comboBox4.getSelectedItem();
 
-        //Puts the new user into a user Profile List
+        //Puts the new user into a user Profile List (set to the Database.txt path file)
         List<String> profile = new ArrayList<>();
         profile.add(id);
         profile.add(first);
