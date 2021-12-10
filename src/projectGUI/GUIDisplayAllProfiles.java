@@ -1,4 +1,4 @@
-package projectGUI;
+/*package projectGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -75,3 +75,5 @@ public class GUIDisplayAllProfiles {
         f.setSize(150,400);
     }
 }
+
+ */

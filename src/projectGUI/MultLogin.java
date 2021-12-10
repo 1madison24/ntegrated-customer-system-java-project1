@@ -44,6 +44,8 @@ public class MultLogin {
                                 "<br/>Method: " + rightProfiles.get(11) + "</html>");
 //Creating a next button
                         JButton Next = new JButton("Next");
+                        Next.setBounds(275, 520, 150, 40);
+                        Next.setFont(new Font("Courier", Font.PLAIN, 20));
                         //Add action listener for button that changes to the next profile
                         //Changes to the next profile by removing the first 12 inputs through a for loop
                         Next.addActionListener(alpha->{

@@ -133,23 +133,43 @@ public class CreateProfile {
                 profile.add(phone1);
             }
             catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number");
+                JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number with the format: e.x. 9998887777");
+            }
         }
-          //Error handling dealing with the income   
+        else {
+            JOptionPane.showMessageDialog(null, "Please Enter a Valid Phone Number with the format: e.x. 9998887777");
         }
+        //Error handling dealing with the income
         try {
             Integer.parseInt(income.getText());
             profile.add(income1);
         }
         catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Please Enter a Valid Income");
+            JOptionPane.showMessageDialog(null, "Please Enter a Valid Income: e.x. 10000");
         }
+
+
+
         profile.add(use);
         profile.add(status);
         profile.add(model1);
-        profile.add(year1);
+
+        //error handling with the year
+        try{
+            if((Integer.parseInt(year1) > 999) && (Integer.parseInt(year1) < 10000)) {
+                profile.add(year1);
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Year is invalid: Correct format should have 4 digits: e.x 2022"); //that way the user knows how to format their input
+            }
+        }
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,"Year is invalid: Correct format should have 4 digits: e.x 2022"); //that way user knows how to format their input
+        }
+
         profile.add(type);
         profile.add(method);
+
 
         return profile;
     }

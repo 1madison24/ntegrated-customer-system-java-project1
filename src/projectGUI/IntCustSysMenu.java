@@ -49,7 +49,7 @@ public class IntCustSysMenu {
             }
             //Display all profiles
             if (displayAllProfilesRadioButton.isSelected()) {
-                GUIDisplayAllProfiles prof = new GUIDisplayAllProfiles();
+                MultLogin prof = new MultLogin();
                 check = 1;
                 prof.openGUI();
             }

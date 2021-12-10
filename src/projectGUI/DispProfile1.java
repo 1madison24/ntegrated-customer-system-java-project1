@@ -15,7 +15,7 @@ public class DispProfile1 {
     //Creating a select button
     private final JButton selectButton = new JButton("Select");
 
-    public DispProfile1(){
+    public DispProfile1() {
         //Creating an action listener in order to get information from the getpath() class (the Database.txt file)
         selectButton.addActionListener(e -> {
             String last = lastName.getText();
@@ -25,8 +25,8 @@ public class DispProfile1 {
             Path path = pathname.getIt();
             boolean status = DBController.searchProfile(last, id, path);
             //If a profile was found with the corresponding last name print out profile information
-            if(status) {
-                funcCall.getProfileByLastName(last,id,path);
+            if (status) {
+                funcCall.getProfileByLastName(last, id, path);
 
                 List<String> theProf = DBController.getProfileByLastName(last, id, path);
                 JFrame DispForm = new JFrame();
@@ -45,20 +45,22 @@ public class DispProfile1 {
             else {
                 JOptionPane.showMessageDialog(null, "There is no such Profile");
             }
-            });
-    //Creating the actual gui
-    public void openGUI(){
-        JFrame f = new JFrame("Integrated Customer System");
-        f.setContentPane(new DispProfile1().dispProf1);
-        f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
-        f.add(adminID);
-        f.add(new JLabel("Last Name:", SwingConstants.LEFT), f);
-        f.add(lastName);
-        f.add(selectButton);
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.pack();
-        f.setVisible(true);
-        //Changing the size of our gui frame 
-        f.setSize(150,400);
+        });
     }
-}
+        //Creating the actual gui
+        public void openGUI(){
+            JFrame f = new JFrame("Integrated Customer System");
+            f.setContentPane(new DispProfile1().dispProf1);
+            f.add(new JLabel("Admin ID:", SwingConstants.LEFT), f);
+            f.add(adminID);
+            f.add(new JLabel("Last Name:", SwingConstants.LEFT), f);
+            f.add(lastName);
+            f.add(selectButton);
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            f.pack();
+            f.setVisible(true);
+            //Changing the size of our gui frame
+            f.setSize(150, 400);
+        }
+    }
+

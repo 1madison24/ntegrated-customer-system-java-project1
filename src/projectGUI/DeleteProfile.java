@@ -22,12 +22,13 @@ public class DeleteProfile {
 //Creating a listener in order to view the Database.txt file in the getpath() class
             DBController funcCall = new DBController();
             getPath pathname = new getPath();
-            Path path = getPath.getIt();
+            Path path = pathname.getIt();
+
             boolean status = DBController.searchProfile(last, id, path);
             
 //Creating an if statement that if a profile is found, it gets deleted from the Database.txt file and a JFrame "Success" appears
             if (status){
-                DBController.deleteProfileByLastname(last, id, path);
+                funcCall.deleteProfileByLastname(last, id, path);
                 JOptionPane.showMessageDialog(null, "Success!");
             }
             //No files are found so a Jframe "The profile does not exist appears
