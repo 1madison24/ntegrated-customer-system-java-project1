@@ -14,6 +14,7 @@ import java.lang.String;
 
 
 public class CreateProfile {
+    //Creating the Text boxes and combo boxes for user to input information
     private JPanel createPanel = new JPanel();
     private JTextField admin = new JTextField(10);
     private JTextField firstName = new JTextField(10);
@@ -27,6 +28,7 @@ public class CreateProfile {
     private JTextField year = new JTextField(10);
     private JComboBox comboBox3 = new JComboBox();; //Type
     private JComboBox comboBox4 = new JComboBox();; //Method
+    //Created a submit button
     private JButton submitButton = new JButton("Submit");
 
     public CreateProfile() {
@@ -55,7 +57,8 @@ public class CreateProfile {
         comboBox4.addItem("Certified Pre-Owned");
         comboBox4.addItem("Used");
         comboBox4.addItem("Other");
-
+        
+//Creates an action listener to send all information to DataBase.txt file
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,6 +71,7 @@ public class CreateProfile {
             }
         });
     }
+    //Creating the actual GUI
         public void openGUI () {
             JFrame f = new JFrame("Integrated Customer System"); //creates an instance
             f.setContentPane(new CreateProfile().createPanel);
