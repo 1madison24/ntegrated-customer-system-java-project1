@@ -9,6 +9,8 @@ public class DeleteFail {
     private JButton OKButton;
 
     public DeleteFail(){
+        //Adds an action listener that views the information from the DeleteProfile class
+        //If profile did not delete or was not found then JFrame appears stating that the profile was not deleted
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
