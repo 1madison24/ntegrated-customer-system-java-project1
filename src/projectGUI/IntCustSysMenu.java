@@ -1,14 +1,13 @@
 package projectGUI;
 
 import javax.swing.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
 
 public class IntCustSysMenu {
+    //Creating a button group in order to view radio buttons 
     private final JButton selectButton = new JButton("Submit");
     private final JPanel menuPanel = new JPanel();
     private final JRadioButton createProfileRadioButton = new JRadioButton("Create Profile");
@@ -20,45 +19,47 @@ public class IntCustSysMenu {
 
 
     public IntCustSysMenu() {
-
+//Adding an action listener to send users to right "class" upon click
         selectButton.addActionListener(e -> {
 
             int check = 0;
-
+//Createprofile
             if (createProfileRadioButton.isSelected()) {
                 CreateProfile v = new CreateProfile();
                 check = 1;
                 v.openGUI();
             }
+            //DeleteProfile
             if (deleteProfileRadioButton.isSelected()) {
                 DeleteProfile prof = new DeleteProfile();
                 check = 1;
                 prof.openGUI();
             }
-
+//UpdateProfile
             if (updateProfileRadioButton.isSelected()) {
                 UpdateProfileAttempt prof = new UpdateProfileAttempt();
                 check = 1;
                 prof.openGUI();
             }
-
+//Find Profile
             if (findDisplayProfileRadioButton.isSelected()) {
                 DispProfile1 prof = new DispProfile1();
                 check = 1;
                 prof.openGUI();
             }
+            //Display all profiles
             if (displayAllProfilesRadioButton.isSelected()) {
                 GUIDisplayAllProfiles prof = new GUIDisplayAllProfiles();
                 check = 1;
                 prof.openGUI();
             }
+            //Error hadling if button is not selected 
             if (check == 0){
                 JOptionPane.showMessageDialog(null, "Please Choose a Valid Option");
             }
         });
     }
-    //public static void main(String[] args) {}
-
+//Open actual GUI
     public void openGUI() {
         buttons.add(createProfileRadioButton);
         buttons.add(deleteProfileRadioButton);
